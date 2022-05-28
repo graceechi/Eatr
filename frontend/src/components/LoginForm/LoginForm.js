@@ -20,10 +20,10 @@ function LoginFormContainer() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    // const user = {
-    //   credential,
-    //   password,
-    // };
+    const user = {
+      credential,
+      password,
+    };
     return dispatch(sessionActions.sessionLogin({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
