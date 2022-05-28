@@ -3,7 +3,7 @@ import { csrfFetch } from './csrf';
 const LOGIN_USER = 'session/LOGIN';
 const LOGOUT_USER = 'session/LOGOUT';
 
-// login user
+// login user action
 const loginUser = (user) => {
   return {
     type: LOGIN_USER,
@@ -11,7 +11,7 @@ const loginUser = (user) => {
   };
 };
 
-// logout user
+// logout user action
 const logoutUser = () => {
   return {
     type: LOGOUT_USER,
@@ -35,6 +35,7 @@ export const sessionLogin = (user) => async (dispatch) => {
     }
 };
 
+// restore user thunk
 export const restoreUser = () => async (dispatch) => {
     const response = await csrfFetch("/api/session");
     const data = await response.json();
@@ -50,7 +51,7 @@ export const sessionLogout = () => async (dispatch) => {
     return response;
 };
 
-
+// signup thunk
 export const signUpUser = (user) => async (dispatch) => {
     const { username, email, password } = user;
     const response = await csrfFetch("/api/users", {
