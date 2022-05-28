@@ -3,7 +3,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import './LoginForm.css';
-import DemoUserButton from "../DemoUserButton";
+// import DemoUserButton from "../DemoUserButton";
 
 function LoginFormContainer() {
   const dispatch = useDispatch();
@@ -84,7 +84,7 @@ function LoginFormContainer() {
             </p>
           </div> */}
         </form>
-        <DemoUserButton />
+        {/* <DemoUserButton /> */}
         <div className='line-skip'></div>
     </div>
   );

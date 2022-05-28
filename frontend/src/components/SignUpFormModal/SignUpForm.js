@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import '../LoginForm/LoginForm.css'
+import '../LoginFormModal/LoginForm.css'
 
 function SignUpFormContainer() {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function SignUpFormContainer() {
         email,
         password,
       };
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signUpUser({ email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
