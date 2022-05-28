@@ -43,6 +43,7 @@ export const restoreUser = () => async (dispatch) => {
     return response;
 };
 
+// logout thunk
 export const sessionLogout = () => async (dispatch) => {
     const response = await csrfFetch("/api/session", {
         method: "DELETE",
