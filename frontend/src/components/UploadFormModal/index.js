@@ -1,0 +1,28 @@
+// import { useState } from "react";
+// import UploadForm from "./UploadFormModal/UploadForm.js";
+// import { Modal } from "../../context/Modal";
+// import "./UploadPage.css";
+
+// const UploadFormModal = ({ option }) => {
+//   const [showModal, setShowModal] = useState(false);
+
+//   return (
+//     <>
+//       <button className={`${option ? "no-back" : "upload-btn"}`}>
+//         <i
+//           className={`fa-solid fa-cloud-arrow-up fa-2xl ${
+//             option ? option : ""
+//           }`}
+//           onClick={() => setShowModal(true)}
+//         ></i>
+//       </button>
+//       {showModal && (
+//         <Modal onClose={() => setShowModal(false)}>
+//           <UploadForm setShowModal={setShowModal} />
+//         </Modal>
+//       )}
+//     </>
+//   );
+// };
+
+// export default UploadFormModal;

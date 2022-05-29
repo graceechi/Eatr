@@ -3,9 +3,10 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LoginFormModal from "../LoginFormModal";
 import SignUpFormModal from "../SignUpFormModal";
-// import UploadFormModal from "../UploadPage";
+// import UploadForm from "../UploadFormModal";
 import "./Navigation.css";
 import ProfileButton from "./ProfileButton";
+import UploadPhotoModal from "../UploadFormModal/UploadPhotoModal";
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -21,7 +22,9 @@ function Navigation({ isLoaded }) {
         );
         sessionLinks = (
             <>
-                {/* <UploadFormModal /> */}
+                <div id='upload-btn-container'>
+                    <UploadPhotoModal user={sessionUser}/>
+                </div>
                 <ProfileButton />
             </>
         );

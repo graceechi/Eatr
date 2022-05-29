@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import * as sessionActions from "../../store/session";
 import './Navigation.css';
-import UploadFormModal from '../UploadFormModal';
+// import UploadFormModal from '../UploadFormModal';
 
 const ProfileButton = ({ user }) => {
 const sessionUser = useSelector(state => state.session.user);

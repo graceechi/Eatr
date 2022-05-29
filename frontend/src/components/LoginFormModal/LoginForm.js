@@ -62,20 +62,6 @@ function LoginFormContainer() {
                 onChange={(e) => setCredential(e.target.value)}
             ></input>
         </div>
-        {/* <div className='input-container'>
-            <label>
-              Username or Email Address
-            </label>
-            <input
-              className="form-input"
-              name="credential"
-              type="text"
-              value={credential}
-              required
-              placeholder="Username or Email Address"
-              onChange={(e) => setCredential(e.target.value)}
-            />
-          </div> */}
 
         <div className="input-container">
           <input

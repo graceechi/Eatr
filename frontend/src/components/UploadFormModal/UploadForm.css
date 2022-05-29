@@ -1,0 +1,70 @@
+#upload-btn {
+    background: none;
+    color: white;
+    background-color: rgb(27, 27, 27);
+    border: none;
+    width: 60px;
+    height: 60px;
+}
+
+/* #upload-btn:hover {
+    cursor: pointer;
+} */
+
+.fas fa-cloud-upload-alt {
+    color: white;
+    font-size: 20px;
+}
+
+.upload-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 5px 5px 10px -3px whitesmoke; */
+    /* -webkit-box-shadow: 0 0 20px rgb(192, 158, 114);
+        box-shadow: 0 0 20px rgb(192, 158, 114); */
+    -moz-box-shadow: 0 0 17px whitesmoke;
+    -webkit-box-shadow: 0 0 17px whitesmoke;
+    box-shadow: 0 0 17px whitesmoke;
+}
+
+.form-header-text {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 3.5rem;
+    width: 25rem;
+}
+
+.form-input {
+    width: 75%;
+    padding: 10px;
+    height: 25px;
+    /* border-radius: 3px; */
+}
+
+#submitBtn, #cancelBtn {
+    width: 82%;
+    margin-top: 15px;
+    height: 2.5rem;
+    border-radius: 7px;
+    color: white;
+}
+
+#submitBtn:hover, #cancelBtn:hover {
+    background-color: rgb(27, 27, 27);
+    border: 1px solid rgb(27, 27, 27);
+}
+
+.form-input .file-input {
+    border: 1px solid black;
+}
