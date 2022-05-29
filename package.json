@@ -1,5 +1,5 @@
 {
-  "name": "flavr_react_project",
+  "name": "Flavr_react_project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,13 +14,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/graceechi/Eatr.git"
+    "url": "git+https://github.com/graceechi/Flavr.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/graceechi/Eatr/issues"
+    "url": "https://github.com/graceechi/Flavr/issues"
   },
-  "homepage": "https://github.com/graceechi/Eatr#readme"
+  "homepage": "https://github.com/graceechi/Flavr#readme"
 }
