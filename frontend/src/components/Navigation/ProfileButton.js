@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import * as sessionActions from "../../store/session";
 import './Navigation.css';
+import UploadFormModal from '../UploadFormModal';
 
 const ProfileButton = ({ user }) => {
 const sessionUser = useSelector(state => state.session.user);
@@ -25,10 +26,10 @@ const sessionUser = useSelector(state => state.session.user);
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const profile = e => {
-    e.preventDefault();
-    history.push(`/profile/${sessionUser.id}`);
-  }
+  // const upload = e => {
+  //   e.preventDefault();
+  //   history.push('')
+  // }
 
   const logout = (e) => {
     e.preventDefault();
@@ -43,13 +44,9 @@ const sessionUser = useSelector(state => state.session.user);
       </button>
       {showMenu && (
         <div className="profile-dropdown">
-            {/* <a href={`/profile/${sessionUser.id}`} onClick={profile} id='profile-dropdown'>Profile</a> */}
+            {/* <a href={`/users/${sessionUser.id}`} onClick={profile} id='profile-dropdown'>Profile</a> */}
+            <div id='hello-dropdown'>Hello, @{sessionUser.username}!</div>
             <a href='/' onClick={logout} id='logout-dropdown'>Log Out</a>
-          {/* <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li> */}
         </div>
       )}
     </>
