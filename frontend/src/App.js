@@ -31,9 +31,6 @@ function App() {
           <Route path="/faves">
             <FavePage />
           </Route>
-          <Route path="/search/:searchInput">
-            <Search />
-          </Route>
           <Route>
             <PageNotFound />
           </Route> */}
