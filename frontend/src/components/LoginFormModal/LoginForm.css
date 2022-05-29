@@ -79,11 +79,12 @@
     margin-top: 15px;
     height: 2.5rem;
     border-radius: 7px;
+    color: white;
 }
 
 .submitBtn:hover {
-    background-color: rgb(236, 217, 191);
-    border: 1px solid rgb(236, 217, 191);
+    background-color: rgb(27, 27, 27);
+    border: 1px solid rgb(27, 27, 27);
 }
 
 .demo-user-btn {
@@ -91,11 +92,12 @@
     margin-top: 10px;
     height: 2.5rem;
     border-radius: 7px;
+    color: white;
 }
 
 .demo-user-btn:hover {
-    background-color: rgb(236, 217, 191);;
-    border: 1px solid rgb(236, 217, 191);
+    background-color: rgb(27, 27, 27);
+    border: 1px solid rgb(27, 27, 27);
 }
 
 .line-skip {

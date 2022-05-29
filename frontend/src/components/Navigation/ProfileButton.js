@@ -38,19 +38,19 @@ const sessionUser = useSelector(state => state.session.user);
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fa-solid fa-circle-user"></i>
+      <button class="profile-btn" onClick={openMenu}>
+        <i className="fas fa-user-alt"></i>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
-            <a href={`/profile/${sessionUser.id}`} onClick={profile} id='profile-nav'>Profile</a>
-            <a href='/' onClick={logout} id='logout-nav'>Log Out</a>
+        <div className="profile-dropdown">
+            {/* <a href={`/profile/${sessionUser.id}`} onClick={profile} id='profile-dropdown'>Profile</a> */}
+            <a href='/' onClick={logout} id='logout-dropdown'>Log Out</a>
           {/* <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li> */}
-        </ul>
+        </div>
       )}
     </>
   );
