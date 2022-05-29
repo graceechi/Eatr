@@ -3,7 +3,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import './LoginForm.css';
-// import DemoUserButton from "../DemoUserButton";
+import DemoButton from "../DemoButton";
 
 function LoginFormContainer() {
   const dispatch = useDispatch();
@@ -62,6 +62,20 @@ function LoginFormContainer() {
                 onChange={(e) => setCredential(e.target.value)}
             ></input>
         </div>
+        {/* <div className='input-container'>
+            <label>
+              Username or Email Address
+            </label>
+            <input
+              className="form-input"
+              name="credential"
+              type="text"
+              value={credential}
+              required
+              placeholder="Username or Email Address"
+              onChange={(e) => setCredential(e.target.value)}
+            />
+          </div> */}
 
         <div className="input-container">
           <input
@@ -84,7 +98,7 @@ function LoginFormContainer() {
             </p>
           </div> */}
         </form>
-        {/* <DemoUserButton /> */}
+        <DemoButton />
         <div className='line-skip'></div>
     </div>
   );

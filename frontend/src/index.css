@@ -1,1 +1,40 @@
 /* TODO Add site wide styles */
+
+* {
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    background-color: rgb(240, 240, 240);
+    margin: 0;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.errors-list {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    padding: 0 30px;
+}
+
+.error {
+    color: rgb(174, 55, 55);
+    font-size: 15px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button {
+    background-color: rgb(213, 185, 163);
+    border: 1px solid rgb(213, 185, 163);
+}

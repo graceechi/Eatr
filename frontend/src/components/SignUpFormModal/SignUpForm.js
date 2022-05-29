@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import '../LoginFormModal/LoginForm.css'
+import DemoButton from "../DemoButton";
 
 function SignUpFormContainer() {
   const dispatch = useDispatch();
@@ -93,8 +94,9 @@ function SignUpFormContainer() {
         </div>
 
         <button className='submitBtn' type="submit">Sign Up</button>
-    </form>
-    {/* <div className='line-skip'></div> */}
+      </form>
+      <DemoButton />
+      <div className='line-skip'></div>
     </div>
   );
 }

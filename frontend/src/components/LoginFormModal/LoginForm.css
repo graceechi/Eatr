@@ -3,6 +3,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* box-shadow: 5px 5px 10px -3px whitesmoke; */
+    /* -webkit-box-shadow: 0 0 20px rgb(192, 158, 114);
+        box-shadow: 0 0 20px rgb(192, 158, 114); */
+    -moz-box-shadow: 0 0 17px whitesmoke;
+    -webkit-box-shadow: 0 0 17px whitesmoke;
+    box-shadow: 0 0 17px whitesmoke;
 }
 
 .form-header {
@@ -21,7 +27,7 @@
 .form-header-text {
     text-align: center;
     margin-bottom: 5px;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .form-container {
@@ -47,42 +53,53 @@
     width: 25rem;
 }
 
-/* .input-container > label {
-    align-self: flex-start;
-    margin-left: 39px;
-    font-size: 14px;
-    margin-bottom: 3px;
-    color: gray;
+/* .input-container label {
+    font-size: 15px;
+    position: absolute;
+    color: #898989;
+    transform: translateY(15px) scale(1);
+    transform-origin: top left;
+    transition: all .1s ease-in-out;
+    padding-left: 3px;
 } */
 
-/* .input-container > textarea {
-    resize: none;
+/* label {
+    cursor: default;
 } */
 
 .form-input {
     width: 75%;
     padding: 10px;
     height: 25px;
+    /* border-radius: 3px; */
 }
-
-/* .password-input {
-width: 80%;
-} */
 
 .submitBtn {
     width: 82%;
     margin-top: 15px;
     height: 2.5rem;
+    border-radius: 7px;
+}
+
+.submitBtn:hover {
+    background-color: rgb(236, 217, 191);
+    border: 1px solid rgb(236, 217, 191);
 }
 
 .demo-user-btn {
     width: 82%;
     margin-top: 10px;
     height: 2.5rem;
+    border-radius: 7px;
+}
+
+.demo-user-btn:hover {
+    background-color: rgb(236, 217, 191);;
+    border: 1px solid rgb(236, 217, 191);
 }
 
 .line-skip {
     width: 82%;
     margin-top: 20px;
-    border: 0.2px solid rgb(206, 206, 206);
+    /* border: 0.2px solid rgb(206, 206, 206); */
 }
