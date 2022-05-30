@@ -12,7 +12,6 @@ function UploadPhotoModal({ user }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [showModal, setShowModal] = useState(false);
-    const [title, setTitle] = useState('');
     const [caption, setCaption] = useState('');
     const [photo, setPhoto] = useState(null);
     // const [imgURL, setImgURL] = useState('');
@@ -20,7 +19,6 @@ function UploadPhotoModal({ user }) {
     const handleSubmit = async e => {
         e.preventDefault();
         const uploadedPhoto = {
-        title,
         caption,
         // imgURL,
         photo,
@@ -28,7 +26,6 @@ function UploadPhotoModal({ user }) {
         }
         const newPhoto = await dispatch(uploadPhoto(uploadedPhoto))
         setShowModal(false);
-        setTitle('');
         setCaption('');
         // setImgURL('');
         setPhoto(null);
@@ -51,9 +48,6 @@ function UploadPhotoModal({ user }) {
                 <div className='line-skip'></div>
                 <div className="form-header-text">Upload Photo</div>
                 <div className='line-skip'></div>
-                <div className='input-container'>
-                    <input type="text" value={title} className="form-input" placeholder='Title' onChange={e => setTitle(e.target.value)} required />
-                </div>
                 <div className='input-container'>
                     <input type="text" value={caption} className="form-input" placeholder='Caption' onChange={e => setCaption(e.target.value)} />
                 </div>

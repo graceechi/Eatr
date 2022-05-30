@@ -50,10 +50,9 @@ export const loadFaves = (userId) => async (dispatch) => {
 };
 
 export const uploadPhoto = (submission) => async (dispatch) => {
-  const { title, caption, photo, userId } = submission;
+  const { caption, photo, userId } = submission;
   const formData = new FormData();
   formData.append("userId", userId);
-  if (title) formData.append("title", title);
   if (caption) formData.append("caption", caption);
   if (photo) formData.append("photo", photo);
   const res = await csrfFetch(`/api/photos`, {

@@ -1,1 +1,26 @@
-hi from solo react project
+
+npx sequelize model:generate --name Photos --attributes userId:integer,imageUrl:string,caption:string,favesCount:integer
+
+npx sequelize model:generate --name Comments --attributes userId:integer,photoId:integer,comment:string
+
+npx sequelize model:generate --name Faves --attributes userId:integer,photoId:integer
+
+
+npx dotenv sequelize db:seed:undo:all
+npx dotenv sequelize db:migrate:undo
+npx dotenv sequelize db:migrate
+npx dotenv sequelize db:seed:all
+
+npx sequelize seed:generate --name demo-user
+npx sequelize seed:generate --name photoSeeds
+npx sequelize seed:generate --name commentSeeds
+
+
+psql <database name> -c '\d "Users"'
+psql <database name> -c 'SELECT * FROM "Users"'
+
+
+npx dotenv sequelize db:drop
+npx dotenv sequelize db:create
+npx dotenv sequelize db:migrate
+npx dotenv sequelize db:seed:all

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 30],
+        len: [4, 30],
         isNotEmail(value) {
           if (Validator.isEmail(value)) {
             throw new Error('Cannot be an email.');
@@ -84,6 +84,26 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.Photo, {
+      foreignKey: "userId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
+    User.belongsToMany(models.Photo, {
+      foreignKey: "userId",
+      through: "Fave",
+      otherKey: "photoId",
+    });
+    User.hasMany(models.Comment, {
+      foreignKey: "userId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
+    User.hasMany(models.Fave, {
+      foreignKey: "userId",
+      onDelete: "CASCADE",
+      hooks: true,
+    });
   };
 
   return User;
