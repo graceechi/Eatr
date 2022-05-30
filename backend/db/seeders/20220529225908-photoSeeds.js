@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         userId: 3,
-        imageUrl: "backend/public/photos/08-cheescake.jpg",
+        imageUrl: "backend/public/photos/08-cheesecake.jpg",
         caption: "dessert lover <3",
         favesCount: 36
       },
@@ -124,6 +124,12 @@ module.exports = {
         favesCount: 49
       },
       {
+        userId: 2,
+        imageUrl: "backend/public/photos/25-cocktail.jpg",
+        caption: "cocktail hour again",
+        favesCount: 67
+      },
+      {
         userId: 5,
         imageUrl: "backend/public/photos/26-bibimbap.jpg",
         caption: "I love Korean food!",
@@ -197,6 +203,12 @@ module.exports = {
       },
       {
         userId: 1,
+        imageUrl: "backend/public/photos/38-bruschetta.jpg",
+        caption: "it's a bruschetta day",
+        favesCount: 56
+      },
+      {
+        userId: 1,
         imageUrl: "backend/public/photos/39-cocktail.jpg",
         caption: "this was so good",
         favesCount: 62
@@ -262,7 +274,7 @@ module.exports = {
         favesCount: 57
       },
       {
-        userId: 1,
+        userId: 4,
         imageUrl: "backend/public/photos/50-bruschetta.jpg",
         caption: "breakfast",
         favesCount: 65
