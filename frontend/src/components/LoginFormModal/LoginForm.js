@@ -7,7 +7,7 @@ import DemoButton from "../DemoButton";
 
 function LoginFormContainer() {
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
@@ -20,15 +20,18 @@ function LoginFormContainer() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    const user = {
-      credential,
-      password,
-    };
+    // const user = {
+    //   credential,
+    //   password,
+    // };
+
+    history.push('/explore');
+
     return dispatch(sessionActions.sessionLogin({ credential, password }))
-      .catch(async (res) => {
-        const data = await res.json();
+    .catch(async (res) => {
+      const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-      });
+    });
   }
 
   // const navSignup = e => {

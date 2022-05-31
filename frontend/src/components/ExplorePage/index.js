@@ -10,7 +10,7 @@ function ExplorePage() {
     const dispatch = useDispatch();
     const history = useHistory();
     let photos = useSelector(state => state.photos.entries);
-    console.log(photos); // undefined...
+    let photoArr = Object.values(photos);
 
     useEffect(() => {
         dispatch(getPhotos());
@@ -26,7 +26,7 @@ function ExplorePage() {
         <div className="body-container">
             <p>Explore</p>
             <div className="grid-container">
-                {photos.map((photo) => {
+                {photoArr.map((photo) => {
                     return (
                         <div key={photo.id} className='photo-container'>
                             <a href={`/photos/${photo.id}`}
@@ -36,10 +36,10 @@ function ExplorePage() {
                                 }}>
                                 <div className='photo-box'>
                                     <img className='photo' src={photo.imageUrl} alt={photo.caption} />
-                                    <div className='text-display'>
+                                    {/* <div className='text-display'>
                                         <p id='photo-caption'>{photo.caption}</p>
-                                        {/* <p id='photo-user'>by {photo.User?.username}</p> */}
-                                    </div>
+                                        <p id='photo-user'>by {photo.User?.username}</p>
+                                    </div> */}
                                 </div>
                             </a>
                         </div>

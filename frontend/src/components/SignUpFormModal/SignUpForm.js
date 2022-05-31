@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import '../LoginFormModal/LoginForm.css'
 import DemoButton from "../DemoButton";
 
 function SignUpFormContainer() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ function SignUpFormContainer() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/explore" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +34,7 @@ function SignUpFormContainer() {
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
+  history.push('/explore');
 
   return (
     <div className="login-page-container">
