@@ -34,7 +34,7 @@ function SignUpFormContainer() {
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
-  history.push('/explore');
+  // history.push('/explore');
 
   return (
     <div className="login-page-container">
