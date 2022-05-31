@@ -6,7 +6,7 @@ function SplashPage() {
             <div className="text-container">
                 <h1>Find your flavors.</h1>
                 <p>
-                Join the Flavr community, home to interested foodies and food photography.
+                Join the Flavr community, home to inspirational foodies and food photography.
                 </p>
             </div>
         </div>
