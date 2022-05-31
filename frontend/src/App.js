@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
+import ExplorePage from './components/ExplorePage';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,10 @@ function App() {
         <Switch>
           <Route exact path="/">
             <SplashPage />
+            <Footer />
+          </Route>
+          <Route exact path="/explore">
+            <ExplorePage />
           </Route>
           {/* <Route path="/users/:id">
             <UserPage />
@@ -37,7 +42,7 @@ function App() {
           </Route> */}
         </Switch>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

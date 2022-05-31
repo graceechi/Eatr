@@ -16,7 +16,7 @@ function Navigation({ isLoaded }) {
         leftNavLinks = (
         <>
             <NavLink to={`/users/${sessionUser.id}`}>You</NavLink>
-            <NavLink exact to="/">Explore</NavLink>
+            <NavLink exact to="/explore">Explore</NavLink>
             <NavLink to={`/faves`}>Faves</NavLink>
         </>
         );
@@ -42,11 +42,12 @@ function Navigation({ isLoaded }) {
         <div className="nav-left">
             <NavLink exact to="/">
             {/* FIND IMAGE LOGO FOR FLAVR */}
-            <img
+            {/* <img
                 src=""
                 className="nav-logo"
                 alt="logo"
-            ></img>
+            ></img> */}
+                <h1>Flavr</h1>
             </NavLink>
             {isLoaded && leftNavLinks}
         </div>

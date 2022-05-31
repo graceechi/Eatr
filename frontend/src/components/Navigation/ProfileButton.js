@@ -39,7 +39,7 @@ const sessionUser = useSelector(state => state.session.user);
 
   return (
     <>
-      <button class="profile-btn" onClick={openMenu}>
+      <button className="profile-btn" onClick={openMenu}>
         <i className="fas fa-user-alt"></i>
       </button>
       {showMenu && (

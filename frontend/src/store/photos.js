@@ -1,127 +1,136 @@
 import { csrfFetch } from "./csrf";
 
-// read photos & faves
-const LOAD_USER_PHOTOS = "profile/LOAD_USER_PHOTOS";
-const LOAD_USER_FAVES = "profile/LOAD_USER_FAVES";
-// create(upload) & delete photos
-const ADD_PHOTO = "image/ADD_PHOTO";
-const DELETE_PHOTO = "image/DELETE_PHOTO";
+const LOAD_PHOTOS = 'photos/LOAD_PHOTOS';
+// const LOAD_ONE_PHOTO = 'photos/LOAD_ONE_PHOTO';
+const ADD_ONE_PHOTO = 'photos/ADD_ONE_PHOTO';
+// const UPDATE_PHOTO = '/photos/UPDATE_PHOTO';
+// const DELETE_PHOTO = '/photos/DELETE_PHOTO';
 
-const loadUserPhotos = (photos) => {
-  return {
-    type: LOAD_USER_PHOTOS,
-    photos,
-  };
-};
 
-const loadUserFaves = (photos) => {
-  return {
-    type: LOAD_USER_FAVES,
-    photos,
-  };
-};
+const load = photos => ({
+  type: LOAD_PHOTOS,
+  photos,
+})
 
-const addPhoto = (photo) => {
-  return {
-    type: ADD_PHOTO,
-    photo,
-  };
-};
+// const loadOnePhoto = photo => ({
+//   type: LOAD_ONE_PHOTO,
+//   photo,
+// });
 
-const deletePhoto = (photo) => {
-  return {
-    type: DELETE_PHOTO,
-    photo,
-  };
-};
+const addOnePhoto = photo => ({
+  type: ADD_ONE_PHOTO,
+  photo
+})
 
-export const loadPhotos = (userId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/profile/${userId}/images`);
+// const updatePhoto = photo => ({
+//   type: UPDATE_PHOTO,
+//   photo
+// })
+
+// const deletePhoto = photo => ({
+//   type: DELETE_PHOTO,
+//   photo
+// })
+
+// thunk
+export const getPhotos = () => async dispatch => {
+  const res = await csrfFetch('/api/photos/explore');
+
   if (res.ok) {
-    const images = await res.json();
-    dispatch(loadUserPhotos(images));
+    const photos = await res.json();
+    dispatch(load(photos));
   }
-};
+}
 
-export const loadFaves = (userId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/favorites/users/${userId}`);
-  const favorites = await res.json();
-  dispatch(loadUserFaves(favorites));
-};
+// export const getOnePhoto = id => async dispatch => {
+//   const res = await csrfFetch(`/api/photos/${id}`)
+//   if (res.ok) {
+//     const photo = await res.json();
+//     dispatch(loadOnePhoto(photo));
+//   }
+// }
 
-export const uploadPhoto = (submission) => async (dispatch) => {
-  const { caption, photo, userId } = submission;
-  const formData = new FormData();
-  formData.append("userId", userId);
-  if (caption) formData.append("caption", caption);
-  if (photo) formData.append("photo", photo);
-  const res = await csrfFetch(`/api/photos`, {
-    method: "POST",
-    body: formData,
+export const uploadPhoto = data => async dispatch => {
+  const res = await csrfFetch(`/api/photos/`, {
+    method: 'POST',
     headers: {
-      "Content-Type": "multipart/form-data",
+      'Content-Type': 'application/json'
     },
+    body: JSON.stringify(data),
   });
+
   if (res.ok) {
-    const image = await res.json();
-    dispatch(addPhoto(image));
-    return image;
-  } else {
-    const errors = await res.json();
-    console.log(errors);
+    const photo = await res.json();
+    dispatch(addOnePhoto(photo));
+    return photo;
   }
-};
+}
 
-export const removePhoto = (photoId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/photos/${photoId}`, {
-    method: "DELETE",
-  });
-  const image = await res.json();
-  dispatch(deletePhoto(image));
-};
+// export const uploadPhoto = (submission) => async (dispatch) => {
+//   const { caption, photo, userId } = submission;
+//   const formData = new FormData();
+//   formData.append("userId", userId);
+//   if (caption) formData.append("caption", caption);
+//   if (photo) formData.append("photo", photo);
+//   const res = await csrfFetch(`/api/photos`, {
+//     method: "POST",
+//     body: formData,
+//     headers: {
+//       "Content-Type": "multipart/form-data",
+//     },
+//   });
+//   if (res.ok) {
+//     const image = await res.json();
+//     dispatch(addPhoto(image));
+//     return image;
+//   } else {
+//     const errors = await res.json();
+//     console.log(errors);
+//   }
+// };
 
-const initialState = {
-  profileImages: {},
-  favePhotos: {},
-};
+const initialState = { entries: {}, isLoading: true }
 
 const photosReducer = (state = initialState, action) => {
+  // let newState = {};
   switch (action.type) {
-    case LOAD_USER_PHOTOS:
-      const allImages = {};
-      action.images.forEach((image) => (allImages[image.id] = image));
-      return {
-        ...state,
-        profileImages: {
-          ...allImages,
-        },
-      };
-
-    case LOAD_USER_FAVES:
-      return {
-        ...state,
-        favePhotos: { ...action.images },
-      };
-
-    case ADD_PHOTO:
-      const newState = {
-        ...state,
-        profileImages: {
-          ...state.profileImages,
-          [action.image.id]: action.image,
-        },
-      };
+    case LOAD_PHOTOS: {
+      const newState = { ...state, entries: {...state.entries} };
+      action.photos.forEach(photo => {
+        newState.entries[photo.id] = photo;
+      });
       return newState;
+    }
+      // return {
+      //   ...state,
+      //     entries: { state.},
+      // };
 
-    case DELETE_PHOTO:
-      const updatedState = {
-        ...state,
-        profileImages: {
-          ...state.profileImages,
-        },
-      };
-      delete updatedState.profileImages[action.image.id];
-      return updatedState;
+    // case LOAD_USER_FAVES:
+    //   return {
+    //     ...state,
+    //     favePhotos: { ...action.images },
+    //   };
+
+    // case ADD_PHOTO:
+    //   const newState = {
+    //     ...state,
+    //     profileImages: {
+    //       ...state.profileImages,
+    //       [action.image.id]: action.image,
+    //     },
+    //   };
+    //   return newState;
+
+    // case DELETE_PHOTO:
+    //   const updatedState = {
+    //     ...state,
+    //     profileImages: {
+    //       ...state.profileImages,
+    //     },
+    //   };
+    //   delete updatedState.profileImages[action.image.id];
+    //   return updatedState;
 
     default:
       return state;
