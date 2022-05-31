@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
 import ExplorePage from './components/ExplorePage';
+import UserPage from './components/UserPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,10 +29,10 @@ function App() {
           <Route exact path="/explore">
             <ExplorePage />
           </Route>
-          {/* <Route path="/users/:id">
+          <Route path="/users/:id">
             <UserPage />
           </Route>
-          <Route path="/photos/:id">
+          {/* <Route path="/photos/:id">
             <SinglePhotoPage />
           </Route>
           <Route path="/faves">
