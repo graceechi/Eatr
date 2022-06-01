@@ -99,8 +99,8 @@ function SignUpFormContainer() {
         </div>
 
         <button className='submitBtn' type="submit">Sign Up</button>
+        <DemoButton />
       </form>
-      <DemoButton />
       <div className='line-skip'></div>
     </div>
   );

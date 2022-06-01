@@ -61,7 +61,7 @@ const SinglePhotoPage = () => {
                     </div>
                     <div className='caption'>
                         <p id='photo-caption'>{photo.caption}</p>
-                        <p id='faves-text'># people faved this</p>
+                        <p id='faves-text'>109 people faved this</p>
                     </div>
                     <hr/>
                 </div>

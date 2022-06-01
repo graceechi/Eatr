@@ -27,6 +27,7 @@
     -moz-box-shadow: 0 0 17px whitesmoke;
     -webkit-box-shadow: 0 0 17px whitesmoke;
     box-shadow: 0 0 17px whitesmoke;
+    margin: 0px;
 }
 
 .form-header-text {

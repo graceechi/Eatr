@@ -87,8 +87,8 @@ function LoginFormContainer() {
               <a href="/signup" onClick={navSignup}>  Sign up here.</a>
             </p>
           </div> */}
-        </form>
         <DemoButton />
+        </form>
         <div className='line-skip'></div>
     </div>
   );
