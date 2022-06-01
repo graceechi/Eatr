@@ -4,7 +4,7 @@ const LOAD_PHOTOS = 'photos/LOAD_PHOTOS';
 const LOAD_ONE_PHOTO = 'photos/LOAD_ONE_PHOTO';
 const LOAD_USER_PHOTOS = 'photos/LOAD_USER_PHOTOS'
 const ADD_ONE_PHOTO = 'photos/ADD_ONE_PHOTO';
-// const UPDATE_PHOTO = '/photos/UPDATE_PHOTO';
+const UPDATE_PHOTO = '/photos/UPDATE_PHOTO';
 // const DELETE_PHOTO = '/photos/DELETE_PHOTO';
 
 
@@ -28,10 +28,10 @@ const addOnePhoto = photo => ({
   photo
 })
 
-// const updatePhoto = photo => ({
-//   type: UPDATE_PHOTO,
-//   photo
-// })
+const updatePhoto = photo => ({
+  type: UPDATE_PHOTO,
+  photo
+})
 
 // const deletePhoto = photo => ({
 //   type: DELETE_PHOTO,
@@ -53,6 +53,21 @@ export const getOnePhoto = id => async dispatch => {
   if (res.ok) {
     const photo = await res.json();
     dispatch(loadOnePhoto(photo));
+  }
+}
+
+export const updateUserPhoto = photo => async dispatch => {
+  const res = await csrfFetch(`/api/photos/${photo.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(photo),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  if (res.ok) {
+    const updatedPhoto = await res.json();
+    dispatch(updatePhoto(updatedPhoto));
+    return updatedPhoto;
   }
 }
 
@@ -127,6 +142,12 @@ const photosReducer = (state = initialState, action) => {
       action.photos.forEach(photo => {
         newState.entries[photo.id] = photo;
       });
+      return newState;
+    }
+
+    case UPDATE_PHOTO: {
+      const newState = { ...state, entries: {...state.entries} }
+      newState.entries[action.photo.id] = action.photo;
       return newState;
     }
 

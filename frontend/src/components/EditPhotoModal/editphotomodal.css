@@ -1,0 +1,71 @@
+.fa-solid fa-pen-to-square {
+    color: white;
+    font-size: 20px;
+}
+
+#edit-btn {
+    background: none;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+}
+
+.edit-photo-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 5px 5px 10px -3px whitesmoke; */
+    /* -webkit-box-shadow: 0 0 20px rgb(192, 158, 114);
+        box-shadow: 0 0 20px rgb(192, 158, 114); */
+    -moz-box-shadow: 0 0 17px whitesmoke;
+    -webkit-box-shadow: 0 0 17px whitesmoke;
+    box-shadow: 0 0 17px whitesmoke;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-header-text {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+.input-container {
+    width: 80%;
+    padding: 10px;
+    height: 60px;
+}
+
+.save-btn, .cancel-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 82%;
+    margin-top: 15px;
+    height: 2.5rem;
+    border-radius: 7px;
+    color: white;
+}
+
+.save-btn:hover, .cancel-btn:hover {
+    background-color: rgb(27, 27, 27);
+    border: 1px solid rgb(27, 27, 27);
+}

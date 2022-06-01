@@ -14,7 +14,7 @@ function UploadPhotoModal({ user }) {
     const [showModal, setShowModal] = useState(false);
     const [caption, setCaption] = useState('');
     const [photo, setPhoto] = useState(null);
-    // const [imgURL, setImgURL] = useState('');
+    const [imageUrl, setImgURL] = useState('');
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -32,10 +32,10 @@ function UploadPhotoModal({ user }) {
         history.push(`/photos/${newPhoto.id}`)
     }
 
-    const uploadFile = (e) => {
-        const file = e.target.files[0];
-        if (file) setPhoto(file);
-    };
+    // const uploadFile = (e) => {
+    //     const file = e.target.files[0];
+    //     if (file) setPhoto(file);
+    // };
 
     return (
         <div className='modal'>
@@ -49,18 +49,18 @@ function UploadPhotoModal({ user }) {
                 <div className="form-header-text">Upload Photo</div>
                 <div className='line-skip'></div>
                 <div className='input-container'>
-                    <input type="text" value={caption} className="form-input" placeholder='Caption' onChange={e => setCaption(e.target.value)} />
+                    <input type="text" value={caption} className="form-input" placeholder='Caption' onChange={e => setCaption(e.target.value)} required />
                 </div>
-                <div className="input-container">
+                {/* <div className="input-container">
                     <input
                         className="form-input file-input"
                         type="file"
                         onChange={uploadFile}
                     />
-                </div>
-                {/* <div className='input-container'>
-                    <input type="text" value={imgURL} className="form-input" placeholder='Image URL' onChange={e => setImgURL(e.target.value)} required />
                 </div> */}
+                <div className='input-container'>
+                    <input type="text" value={imageUrl} className="form-input" placeholder='Image URL' onChange={e => setImgURL(e.target.value)} required />
+                </div>
                 <button id='submitBtn' type='submit'>Submit</button>
                 <button type='button' id='cancelBtn' onClick={() => setShowModal(false)}>Cancel</button>
                 <div className='line-skip'></div>
