@@ -107,6 +107,7 @@ export const getUserPhotos = id => async dispatch => {
 const initialState = { entries: {}, isLoading: true }
 
 const photosReducer = (state = initialState, action) => {
+  // let newState = {};
   switch (action.type) {
     case LOAD_PHOTOS: {
       const newState = { ...state, entries: {...state.entries} };
