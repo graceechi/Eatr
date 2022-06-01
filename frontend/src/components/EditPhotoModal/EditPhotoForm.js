@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { updateUserPhoto } from '../../store/photos';
 // import { Modal } from '../../context/Modal';
 import "./editphotomodal.css";
@@ -19,8 +19,7 @@ function EditPhotoContainer() {
     const handleSubmit = async e => {
         e.preventDefault();
         const updatePhoto = {
-          photo,
-          caption
+          caption, id
         }
         dispatch(updateUserPhoto(updatePhoto))
         setShowModal(false);
@@ -37,11 +36,11 @@ function EditPhotoContainer() {
         <div className='edit-photo-modal'>
             {/* {showModal && ( */}
                 {/* // <Modal onClose={() => setShowModal(false)}> */}
-                    <div className='form-container'>
+                    <div className='edit-form-container'>
                         <form onSubmit={handleSubmit}>
-                            <div className='form-header-text'>Edit Photo</div>
-                            <textarea className='input-container' type='text' value={caption} placeholder='Caption' onChange={e => setCaption(e.target.value)} />
-                            <button className='save-btn' type='submit'>Save</button>
+                            <div className='form-header-title'>Edit Photo</div>
+                            <textarea className='textarea-container' type='text' value={caption} placeholder='Caption' onChange={e => setCaption(e.target.value)} />
+                            <button className='save-btn' type='submit' onClick={() => setShowModal(false)}>Save</button>
                             {/* <button className='cancel-btn' onClick={() => setShowModal(false)}>Cancel</button> */}
                         </form>
                     </div>

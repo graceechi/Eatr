@@ -56,6 +56,22 @@ export const getOnePhoto = id => async dispatch => {
   }
 }
 
+// export const updateUserPhoto = (payload) => async dispatch => {
+//   const { caption, photoId, imageUrl } = payload;
+//   const res = await csrfFetch(`/api/photos/${photoId}`, {
+//     method: 'PUT',
+//     body: JSON.stringify({ caption, photoId, imageUrl}),
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   });
+//   if (res.ok) {
+//     const updatedPhoto = await res.json();
+//     dispatch(updatePhoto(updatedPhoto));
+//     // return updatedPhoto;
+//   }
+// }
+
 export const updateUserPhoto = photo => async dispatch => {
   const res = await csrfFetch(`/api/photos/${photo.id}`, {
     method: 'PUT',
@@ -64,8 +80,10 @@ export const updateUserPhoto = photo => async dispatch => {
       'Content-Type': 'application/json'
     }
   });
+  // console.log('res', res);
   if (res.ok) {
     const updatedPhoto = await res.json();
+    // console.log('thunk', updatedPhoto)
     dispatch(updatePhoto(updatedPhoto));
     return updatedPhoto;
   }

@@ -53,20 +53,6 @@
     width: 25rem;
 }
 
-/* .input-container label {
-    font-size: 15px;
-    position: absolute;
-    color: #898989;
-    transform: translateY(15px) scale(1);
-    transform-origin: top left;
-    transition: all .1s ease-in-out;
-    padding-left: 3px;
-} */
-
-/* label {
-    cursor: default;
-} */
-
 .form-input {
     width: 75%;
     padding: 10px;

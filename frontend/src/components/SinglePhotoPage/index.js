@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect, useHistory } from 'react-router-dom';
 import { getOnePhoto } from '../../store/photos';
 import EditPhotoModal from '../EditPhotoModal';
+// import DeletePhotoModal from
 import './singlephotopage.css';
 
 const SinglePhotoPage = () => {
@@ -44,6 +45,7 @@ const SinglePhotoPage = () => {
                 {sessionUser.id === photo.User?.id ? (
                     <>
                         <EditPhotoModal photo={photo} />
+                        {/* <DeletePhotoModal photo={photo} /> */}
                     </>
                 ) : (
                     ""
