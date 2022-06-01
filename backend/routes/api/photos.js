@@ -10,21 +10,13 @@ const { User, Photo, Comment, Fave } = require('../../db/models');
 
 const router = express.Router();
 
-// router.get("/explore", requireAuth, restoreUser, asyncHandler(async (req, res) => {
-//     const photos = await Photo.findAll({
-//         include: [{ model: User }, { model: Fave }],
-//         });
-//         return res.json(photos);
-//     })
-// );
-
-// show all photos in db
+// show all photos in db (explore)
 router.get('/explore', asyncHandler(async (req, res) => {
     const photos = await Photo.findAll({ include: User })
     return res.json(photos);
 }))
 
-// show specific photo
+// show one specific photo
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const { id } = req.params;
     let photo = await Photo.findByPk(id, { include: [User] });
@@ -41,5 +33,14 @@ router.put('/:id(\\d+)', requireAuth, restoreUser, asyncHandler(async (req, res)
 
     return res.json(newPhoto);
 }))
+
+// delete photo by user
+router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const deletePhoto = await Photo.findByPk(id);
+    await deletePhoto.destroy();
+    return res.json(deletePhoto);
+    // res.status(204).end();
+  }))
 
 module.exports = router;

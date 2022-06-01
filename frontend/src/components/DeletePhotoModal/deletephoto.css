@@ -1,9 +1,9 @@
-.fa-solid fa-pen-to-square {
+.fa-solid fa-trash-can {
     color: white;
     font-size: 20px;
 }
 
-#edit-btn {
+#delete-photo-btn {
     background: none;
     color: white;
     border: none;
@@ -11,7 +11,7 @@
     height: 60px;
 }
 
-.edit-photo-modal {
+.delete-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,30 +22,27 @@
     -moz-box-shadow: 0 0 17px whitesmoke;
     -webkit-box-shadow: 0 0 17px whitesmoke;
     box-shadow: 0 0 17px whitesmoke;
-
+    padding: 20px;
+    height: 190px;
+    width: 200px;
 }
 
-.form-header-title {
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+.delete-form-header {
     text-align: center;
     margin-bottom: 5px;
     font-size: 17px;
     margin-bottom: 20px;
 }
 
-.edit-form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.textarea-container {
-    width: 80%;
-    padding: 10px;
-    height: 100px;
-}
-
-.save-btn, .cancel-btn {
+.delete-submit-button, .cancel-button {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,7 +54,7 @@
     color: white;
 }
 
-.save-btn:hover, .cancel-btn:hover {
+.delete-submit-button:hover, .cancel-button:hover {
     background-color: rgb(27, 27, 27);
     border: 1px solid rgb(27, 27, 27);
 }

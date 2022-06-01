@@ -5,7 +5,7 @@ const LOAD_ONE_PHOTO = 'photos/LOAD_ONE_PHOTO';
 const LOAD_USER_PHOTOS = 'photos/LOAD_USER_PHOTOS'
 const ADD_ONE_PHOTO = 'photos/ADD_ONE_PHOTO';
 const UPDATE_PHOTO = '/photos/UPDATE_PHOTO';
-// const DELETE_PHOTO = '/photos/DELETE_PHOTO';
+const DELETE_PHOTO = '/photos/DELETE_PHOTO';
 
 
 const load = photos => ({
@@ -33,10 +33,10 @@ const updatePhoto = photo => ({
   photo
 })
 
-// const deletePhoto = photo => ({
-//   type: DELETE_PHOTO,
-//   photo
-// })
+const deletePhoto = photo => ({
+  type: DELETE_PHOTO,
+  photo
+})
 
 // thunk
 export const getPhotos = () => async dispatch => {
@@ -56,22 +56,6 @@ export const getOnePhoto = id => async dispatch => {
   }
 }
 
-// export const updateUserPhoto = (payload) => async dispatch => {
-//   const { caption, photoId, imageUrl } = payload;
-//   const res = await csrfFetch(`/api/photos/${photoId}`, {
-//     method: 'PUT',
-//     body: JSON.stringify({ caption, photoId, imageUrl}),
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   });
-//   if (res.ok) {
-//     const updatedPhoto = await res.json();
-//     dispatch(updatePhoto(updatedPhoto));
-//     // return updatedPhoto;
-//   }
-// }
-
 export const updateUserPhoto = photo => async dispatch => {
   const res = await csrfFetch(`/api/photos/${photo.id}`, {
     method: 'PUT',
@@ -86,6 +70,15 @@ export const updateUserPhoto = photo => async dispatch => {
     // console.log('thunk', updatedPhoto)
     dispatch(updatePhoto(updatedPhoto));
     return updatedPhoto;
+  }
+}
+
+export const deleteUserPhoto = id => async dispatch => {
+  const res = await csrfFetch(`/api/photos/${id}`, {
+    method: 'DELETE',
+  });
+  if (res.ok) {
+    dispatch(deletePhoto(id));
   }
 }
 
@@ -170,11 +163,6 @@ const photosReducer = (state = initialState, action) => {
       return newState;
     }
 
-    // case LOAD_USER_FAVES:
-    //   return {
-    //     ...state,
-    //     favePhotos: { ...action.images },
-    //   };
 
     // case ADD_PHOTO:
     //   const newState = {
@@ -186,15 +174,10 @@ const photosReducer = (state = initialState, action) => {
     //   };
     //   return newState;
 
-    // case DELETE_PHOTO:
-    //   const updatedState = {
-    //     ...state,
-    //     profileImages: {
-    //       ...state.profileImages,
-    //     },
-    //   };
-    //   delete updatedState.profileImages[action.image.id];
-    //   return updatedState;
+    case DELETE_PHOTO:
+      const newState = { ...state, entries: {...state.entries} }
+      delete newState.entries[action.photo];
+      return newState;
 
     default:
       return state;

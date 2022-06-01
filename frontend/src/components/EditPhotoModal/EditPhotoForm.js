@@ -26,12 +26,6 @@ function EditPhotoContainer() {
         history.push(`/photos/${photo.id}`)
     }
 
-    // const handleDelete = async e => {
-    //     e.preventDefault();
-    //     dispatch(deleteUserPhoto(photo.id))
-    //     history.push(`/users/${photo.User.id}`);
-    // }
-
     return (
         <div className='edit-photo-modal'>
             {/* {showModal && ( */}
