@@ -21,6 +21,9 @@
     'comments faves';
     padding: 10px 100px 100px;
     color: black;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
 }
 
 .photo-details {
@@ -97,7 +100,7 @@ p {
 }
 
 a p:hover {
-    color:#9dad7f;
+    color:rgb(213, 185, 163);
 }
 
   /* Edit button features */
