@@ -8,6 +8,7 @@ import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
 import ExplorePage from './components/ExplorePage';
 import UserPage from './components/UserPage';
+import SinglePhotoPage from "./components/SinglePhotoPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,10 +33,10 @@ function App() {
           <Route path="/users/:id">
             <UserPage />
           </Route>
-          {/* <Route path="/photos/:id">
+          <Route path="/photos/:id">
             <SinglePhotoPage />
           </Route>
-          <Route path="/faves">
+          {/* <Route path="/faves">
             <FavePage />
           </Route>
           <Route>

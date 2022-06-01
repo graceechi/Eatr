@@ -1,0 +1,11 @@
+.photo-page-container {
+    padding: 100px 40px 55px;
+    background-color: #212124;
+  }
+
+  .single-photo-container img {
+    display: block;
+    margin: 0 auto;
+    height: 500px;
+    width: auto;
+  }
