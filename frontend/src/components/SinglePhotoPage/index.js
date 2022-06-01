@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect, useHistory } from 'react-router-dom';
 import { getOnePhoto } from '../../store/photos';
+import EditPhotoModal from '../EditPhotoModal';
 import './singlephotopage.css';
 
 const SinglePhotoPage = () => {
@@ -40,6 +41,7 @@ const SinglePhotoPage = () => {
         <div className='photo-page-container'>
             <div className='single-photo-container'>
                 <img src={photo.imageUrl} alt={photo.caption} />
+                <EditPhotoModal />
             </div>
             {/* add edit and delete photo button for modals */}
         </div>
