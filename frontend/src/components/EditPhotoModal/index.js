@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Modal } from "../../context/Modal";
-// import "./editphotomodal.css";
+import "./editphotomodal.css";
 import EditPhotoContainer from "./EditPhotoForm";
 
 const EditPhotoModal = () => {
@@ -8,9 +8,9 @@ const EditPhotoModal = () => {
 
   return (
     <>
-      <i className="fa-solid fa-pen-to-square"
-        onClick={() => setShowModal(true)}
-      ></i>
+        <button onClick={() => setShowModal(true)} id='edit-btn'>
+            <i className="fa-solid fa-pen-to-square"></i>
+        </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditPhotoContainer />

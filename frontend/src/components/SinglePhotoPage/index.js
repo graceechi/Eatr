@@ -41,7 +41,14 @@ const SinglePhotoPage = () => {
         <div className='photo-page-container'>
             <div className='single-photo-container'>
                 <img src={photo.imageUrl} alt={photo.caption} />
-                <EditPhotoModal />
+                {sessionUser.id === photo.User?.id ? (
+                    <>
+                        <EditPhotoModal photo={photo} />
+                    </>
+                ) : (
+                    ""
+                )}
+                {/* <EditPhotoModal /> */}
             </div>
             {/* add edit and delete photo button for modals */}
         </div>
