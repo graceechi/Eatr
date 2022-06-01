@@ -9,17 +9,18 @@ const SinglePhotoPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
-    const photo = useSelector(state => state.photos[id]);
+    const photo = useSelector(state => state.photos.entries[id]);
+    // console.log(photo)
 
     useEffect(() => {
         dispatch(getOnePhoto(id));
         // dispatch(getComments(id));
     }, [dispatch, id])
 
-    // const navProfile = e => {
-    //     e.preventDefault();
-    //     history.push(`/profile/${photo.User?.id}`)
-    // }
+    const navProfile = e => {
+        e.preventDefault();
+        history.push(`/profile/${photo.User?.id}`)
+    }
 
     if (!sessionUser) {
         return (
@@ -32,14 +33,28 @@ const SinglePhotoPage = () => {
     }
 
     return (
+        <>
         <div className='photo-page-container'>
             <div className='single-photo-container'>
                 <img src={photo.imageUrl} alt={photo.caption} />
             </div>
-            <div className='caption'>
-                <p id='photo-caption'>{photo.caption}</p>
-            </div>
         </div>
+            <div className='details-comments'>
+                <div className='photo-details'>
+                    {/* {sessionUser.id === photo.User?.id && <EditPhotoModal />} */}
+                    <div className='user-follow'>
+                        <a id='photographer' href={`/users/${photo.User?.id}`} onClick={navProfile}>@{photo.User?.username}</a>
+                    </div>
+                    <div className='caption'>
+                        <p id='photo-caption'>{photo.caption}</p>
+                        <p id='faves-text'># people faved this</p>
+                    </div>
+                    <hr/>
+                </div>
+                {/* <div className='tags-container'>Tags Coming Soon</div> */}
+                {/* <Comments /> */}
+            </div>
+        </>
     )
 
 }
