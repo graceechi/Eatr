@@ -1,0 +1,71 @@
+.user-photostream {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .user-info-container {
+    background-color: rgb(213, 185, 163);
+    /* background-image: url('../../../public/photos/25-cocktail.jpg'); */
+    height: 140px;
+    margin-top: 50px;
+    width: 100%;
+    padding: 20px;
+  }
+
+  #user-name-text, #user-email {
+    margin-left: 15vw;
+  }
+
+  #user-name-text p, #user-email p {
+    color: rgb(27, 27, 27);
+  }
+
+  #user-name-text p {
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 40px;
+  }
+
+  #user-email p {
+    margin-top: 4px;
+  }
+
+  .grid-container {
+    columns: 3 150px;
+    column-gap: 1rem;
+    width: 70%;
+    margin: 50px 130px 130px 130px;
+  }
+
+  .user-photo-container {
+    margin: 0 1rem 1rem 0;
+    display: inline-block;
+    width: 100%;
+    transition: all .25s ease-in-out;
+    border-radius: 5px;
+  }
+
+  .photo {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .toggle-nav {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0 20px 0;
+    box-shadow: 0px 2px 5px -4px black;
+  }
+
+  .toggle-nav a {
+    margin: 20px;
+    color: rgb(27, 27, 27);
+  }
+
+  .toggle-nav a:hover {
+    color: rgb(213, 185, 163);
+  }

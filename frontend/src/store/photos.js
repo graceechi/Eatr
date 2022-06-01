@@ -89,10 +89,17 @@ export const uploadPhoto = data => async dispatch => {
 //   }
 // };
 
+export const getUserPhotos = id => async dispatch => {
+  const res = await csrfFetch(`/api/users/${id}`)
+  if (res.ok) {
+    const photos = await res.json();
+    dispatch(load(Object.values(photos)));
+  }
+}
+
 const initialState = { entries: {}, isLoading: true }
 
 const photosReducer = (state = initialState, action) => {
-  // let newState = {};
   switch (action.type) {
     case LOAD_PHOTOS: {
       const newState = { ...state, entries: {...state.entries} };
@@ -101,10 +108,6 @@ const photosReducer = (state = initialState, action) => {
       });
       return newState;
     }
-      // return {
-      //   ...state,
-      //     entries: { state.},
-      // };
 
     // case LOAD_USER_FAVES:
     //   return {
