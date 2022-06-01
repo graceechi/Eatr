@@ -13,9 +13,10 @@ function LoginFormContainer() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return (
-    <Redirect to="/explore" />
-  );
+  // if (sessionUser) return (
+  //   <Redirect to="/explore" />
+  // );
+  if (sessionUser) history.push("/explore");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ function LoginFormContainer() {
     //   password,
     // };
 
-    history.push('/explore');
+    // history.push('/explore');
 
     return dispatch(sessionActions.sessionLogin({ credential, password }))
     .catch(async (res) => {

@@ -9,8 +9,10 @@ function UserPage() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
-    const userPhotos = useSelector(state => state.photos)
-    const user = Object.values(userPhotos)[0]?.User;
+    const userPhotos = useSelector(state => state.photos.entries)
+    console.log('UserPage comp', userPhotos)
+    const userPhotoArr = Object.values(userPhotos);
+    // const user = Object.values(userPhotos)[0]?.User;
 
     useEffect(() => {
         dispatch(getUserPhotos(id));

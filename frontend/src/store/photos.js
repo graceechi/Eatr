@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_PHOTOS = 'photos/LOAD_PHOTOS';
-// const LOAD_ONE_PHOTO = 'photos/LOAD_ONE_PHOTO';
+const LOAD_ONE_PHOTO = 'photos/LOAD_ONE_PHOTO';
 const ADD_ONE_PHOTO = 'photos/ADD_ONE_PHOTO';
 // const UPDATE_PHOTO = '/photos/UPDATE_PHOTO';
 // const DELETE_PHOTO = '/photos/DELETE_PHOTO';
@@ -12,10 +12,10 @@ const load = photos => ({
   photos,
 })
 
-// const loadOnePhoto = photo => ({
-//   type: LOAD_ONE_PHOTO,
-//   photo,
-// });
+const loadOnePhoto = photo => ({
+  type: LOAD_ONE_PHOTO,
+  photo,
+});
 
 const addOnePhoto = photo => ({
   type: ADD_ONE_PHOTO,
@@ -42,13 +42,13 @@ export const getPhotos = () => async dispatch => {
   }
 }
 
-// export const getOnePhoto = id => async dispatch => {
-//   const res = await csrfFetch(`/api/photos/${id}`)
-//   if (res.ok) {
-//     const photo = await res.json();
-//     dispatch(loadOnePhoto(photo));
-//   }
-// }
+export const getOnePhoto = id => async dispatch => {
+  const res = await csrfFetch(`/api/photos/${id}`)
+  if (res.ok) {
+    const photo = await res.json();
+    dispatch(loadOnePhoto(photo));
+  }
+}
 
 export const uploadPhoto = data => async dispatch => {
   const res = await csrfFetch(`/api/photos/`, {
@@ -93,6 +93,7 @@ export const getUserPhotos = id => async dispatch => {
   const res = await csrfFetch(`/api/users/${id}`)
   if (res.ok) {
     const photos = await res.json();
+    console.log('store photo', photos)
     dispatch(load(Object.values(photos)));
   }
 }
@@ -106,6 +107,12 @@ const photosReducer = (state = initialState, action) => {
       action.photos.forEach(photo => {
         newState.entries[photo.id] = photo;
       });
+      return newState;
+    }
+
+    case LOAD_ONE_PHOTO: {
+      const newState = { ...state, entries: {...state.entries} };
+      newState.entries[action.photo.id] = action.photo;
       return newState;
     }
 

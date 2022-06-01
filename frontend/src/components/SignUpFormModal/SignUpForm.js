@@ -15,7 +15,10 @@ function SignUpFormContainer() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/explore" />;
+  // if (sessionUser) return <Redirect to="/explore" />;
+
+  if (sessionUser) history.push("/explore");
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
