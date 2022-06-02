@@ -64,10 +64,9 @@ export const updateUserPhoto = photo => async dispatch => {
       'Content-Type': 'application/json'
     }
   });
-  // console.log('res', res);
+
   if (res.ok) {
     const updatedPhoto = await res.json();
-    // console.log('thunk', updatedPhoto)
     dispatch(updatePhoto(updatedPhoto));
     return updatedPhoto;
   }
@@ -97,29 +96,6 @@ export const uploadPhoto = data => async dispatch => {
     return photo;
   }
 }
-
-// export const uploadPhoto = (submission) => async (dispatch) => {
-//   const { caption, photo, userId } = submission;
-//   const formData = new FormData();
-//   formData.append("userId", userId);
-//   if (caption) formData.append("caption", caption);
-//   if (photo) formData.append("photo", photo);
-//   const res = await csrfFetch(`/api/photos`, {
-//     method: "POST",
-//     body: formData,
-//     headers: {
-//       "Content-Type": "multipart/form-data",
-//     },
-//   });
-//   if (res.ok) {
-//     const image = await res.json();
-//     dispatch(addPhoto(image));
-//     return image;
-//   } else {
-//     const errors = await res.json();
-//     console.log(errors);
-//   }
-// };
 
 export const getUserPhotos = id => async dispatch => {
   const res = await csrfFetch(`/api/users/${id}`)
@@ -163,16 +139,12 @@ const photosReducer = (state = initialState, action) => {
       return newState;
     }
 
+    case ADD_ONE_PHOTO: {
+      const newState = { ...state, entries: {...state.entries} }
+      newState.entries[action.photo.id] = action.photo;
 
-    // case ADD_PHOTO:
-    //   const newState = {
-    //     ...state,
-    //     profileImages: {
-    //       ...state.profileImages,
-    //       [action.image.id]: action.image,
-    //     },
-    //   };
-    //   return newState;
+      return newState;
+    }
 
     case DELETE_PHOTO:
       const newState = { ...state, entries: {...state.entries} }

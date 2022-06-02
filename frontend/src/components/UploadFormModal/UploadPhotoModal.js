@@ -13,22 +13,21 @@ function UploadPhotoModal({ user }) {
     const history = useHistory();
     const [showModal, setShowModal] = useState(false);
     const [caption, setCaption] = useState('');
-    const [photo, setPhoto] = useState(null);
+    // const [photo, setPhoto] = useState(null);
     const [imageUrl, setImgURL] = useState('');
 
     const handleSubmit = async e => {
         e.preventDefault();
         const uploadedPhoto = {
-        caption,
-        // imgURL,
-        photo,
-        userId: sessionUser.id
+            caption,
+            imageUrl,
+            userId: sessionUser.id
         }
         const newPhoto = await dispatch(uploadPhoto(uploadedPhoto))
         setShowModal(false);
         setCaption('');
-        // setImgURL('');
-        setPhoto(null);
+        setImgURL('');
+        // setPhoto(null);
         history.push(`/photos/${newPhoto.id}`)
     }
 

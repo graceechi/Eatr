@@ -10,6 +10,13 @@ const { User, Photo, Comment, Fave } = require('../../db/models');
 
 const router = express.Router();
 
+// upload image
+router.post('', requireAuth, asyncHandler(async (req, res) => {
+    const { caption, imageUrl, userId } = req.body;
+    const newPhoto = await Photo.create({ caption, imageUrl, userId });
+    return res.json(newPhoto);
+}))
+
 // show all photos in db (explore)
 router.get('/explore', asyncHandler(async (req, res) => {
     const photos = await Photo.findAll({ include: User })
@@ -40,7 +47,6 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const deletePhoto = await Photo.findByPk(id);
     await deletePhoto.destroy();
     return res.json(deletePhoto);
-    // res.status(204).end();
   }))
 
 module.exports = router;
