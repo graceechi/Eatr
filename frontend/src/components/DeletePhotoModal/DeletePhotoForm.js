@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { deleteUserPhoto } from '../../store/photos';
 import './deletephoto.css';
+import { Modal } from '../../context/Modal';
 
 function DeletePhotoContainer() {
     // const sessionUser = useSelector(state => state.session.user);
@@ -22,12 +23,21 @@ function DeletePhotoContainer() {
     }
 
     return (
+        <>
+        <button onClick={() => setShowModal(true)} id='delete-photo-btn'>
+            <i className="fa-solid fa-trash-can"></i>
+        </button>
         <div className="delete-container">
-            <div className="delete-form-header">Are you sure you want to delete your photo?</div>
+        {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+                <div className="delete-form-header">Are you sure you want to delete your photo?</div>
 
-            <button className="delete-submit-button" onClick={handleDelete}>Delete</button>
-            <button className="cancel-button" onClick={() => setShowModal(false)}>Cancel</button>
+                <button className="delete-submit-button" onClick={handleDelete}>Delete</button>
+                <button className="cancel-button" onClick={() => setShowModal(false)}>Cancel</button>
+            </Modal>
+        )}
         </div>
+        </>
     );
 
 }
