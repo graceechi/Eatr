@@ -24,7 +24,7 @@ const commentsReducer = (state = initialState, action) => {
     // let newState = {};
     switch (action.type) {
         case VIEW_COMMENTS: {
-            const newState = { ...state, entries: {...state.entries} };
+            const newState = { entries: {} };
             action.comments.forEach(comment => {
                 newState.entries[comment.id] = comment;
             });
