@@ -11,7 +11,7 @@ const viewComments = comments => ({
 })
 
 export const loadComments = id => async dispatch => {
-    const res = await csrfFetch(`/api/comments/photos/${id}`);
+    const res = await csrfFetch(`/api/comments/${id}`);
     if (res.ok) {
         const comments = await res.json();
         dispatch(viewComments(comments));

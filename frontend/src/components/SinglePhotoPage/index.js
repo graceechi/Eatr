@@ -7,6 +7,7 @@ import './singlephotopage.css';
 // import DeletePhotoContainer from '../DeletePhotoModal/DeletePhotoForm';
 import EditPhotoModal from '../EditPhotoModal';
 import DeletePhotoModal from '../DeletePhotoModal';
+import Comments from './comments';
 
 const SinglePhotoPage = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -68,7 +69,7 @@ const SinglePhotoPage = () => {
                     <hr/>
                 </div>
                 {/* <div className='tags-container'>Tags Coming Soon</div> */}
-                {/* <Comments /> */}
+                <Comments />
             </div>
         </>
     )

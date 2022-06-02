@@ -89,7 +89,7 @@ p {
     color: black;
 }
 
-.username-display, .session-username-display {
+.comment-username, .session-username-display {
     font-weight: bold;
     margin: 0;
 }
