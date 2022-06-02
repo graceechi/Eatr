@@ -11,22 +11,22 @@
     height: 60px;
 }
 
-/* .delete-container {
+.delete-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
     /* box-shadow: 5px 5px 10px -3px whitesmoke; */
     /* -webkit-box-shadow: 0 0 20px rgb(192, 158, 114);
         box-shadow: 0 0 20px rgb(192, 158, 114); */
 
-    /* -moz-box-shadow: 0 0 17px whitesmoke;
+    -moz-box-shadow: 0 0 17px whitesmoke;
     -webkit-box-shadow: 0 0 17px whitesmoke;
     box-shadow: 0 0 17px whitesmoke;
     padding: 20px;
     height: 190px;
     width: 200px;
-} */
+}
 
 form {
     display: flex;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { updateUserPhoto } from '../../store/photos';
-import { Modal } from '../../context/Modal';
+// import { Modal } from '../../context/Modal';
 import "./editphotomodal.css";
 
 function EditPhotoContainer({}) {
@@ -27,27 +27,21 @@ function EditPhotoContainer({}) {
     }
 
     return (
-        <>
-        <button onClick={() => setShowModal(true)} id='edit-btn'>
-            <i className="fa-solid fa-pen-to-square"></i>
-        </button>
         <div className='edit-photo-modal'>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
+            {/* {showModal && ( */}
+                {/* // <Modal onClose={() => setShowModal(false)}> */}
                     <div className='edit-form-container'>
                         <form onSubmit={handleSubmit}>
                             <div className='form-header-title'>Edit Caption</div>
                             <textarea className='textarea-container' type='text' value={caption} placeholder='Caption' onChange={e => setCaption(e.target.value)} />
                             <button className='save-btn' type='submit' onClick={() => setShowModal(false)}>Save</button>
-                            <button className='cancel-btn' onClick={() => setShowModal(false)}>Cancel</button>
+                            {/* <button className='cancel-btn' onClick={() => setShowModal(false)}>Cancel</button> */}
                         </form>
                     </div>
-                </Modal>
+                {/* // </Modal> */}
 
-            )}
+            {/* // )} */}
         </div>
-        </>
-
     );
 }
 

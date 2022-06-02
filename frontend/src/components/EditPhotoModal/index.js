@@ -1,27 +1,27 @@
-// import { useState } from "react";
-// import { Modal } from "../../context/Modal";
-// import "./editphotomodal.css";
-// import EditPhotoContainer from "./EditPhotoForm";
+import { useState } from "react";
+import { Modal } from "../../context/Modal";
+import "./editphotomodal.css";
+import EditPhotoContainer from "./EditPhotoForm";
 
-// const EditPhotoModal = () => {
-//   const [showModal, setShowModal] = useState(false);
+const EditPhotoModal = () => {
+  const [showModal, setShowModal] = useState(false);
 
 //   const closeModal = () => {
 //     setShowModal(false);
 //   }
 
-//   return (
-//     <>
-//         <button onClick={() => setShowModal(true)} id='edit-btn'>
-//             <i className="fa-solid fa-pen-to-square"></i>
-//         </button>
-//       {showModal && (
-//         <Modal onClose={() => setShowModal(false)}>
-//           <EditPhotoContainer closeModal={{closeModal}} />
-//         </Modal>
-//       )}
-//     </>
-//   );
-// };
+  return (
+    <>
+        <button onClick={() => setShowModal(true)} id='edit-btn'>
+            <i className="fa-solid fa-pen-to-square"></i>
+        </button>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <EditPhotoContainer />
+        </Modal>
+      )}
+    </>
+  );
+};
 
-// export default EditPhotoModal;
+export default EditPhotoModal;

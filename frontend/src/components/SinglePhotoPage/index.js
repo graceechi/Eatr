@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect, useHistory } from 'react-router-dom';
 import { getOnePhoto } from '../../store/photos';
-// import EditPhotoModal from '../EditPhotoModal';
-// import DeletePhotoModal from '../DeletePhotoModal';
 import './singlephotopage.css';
-import EditPhotoContainer from '../EditPhotoModal/EditPhotoForm';
-import DeletePhotoContainer from '../DeletePhotoModal/DeletePhotoForm';
+// import EditPhotoContainer from '../EditPhotoModal/EditPhotoForm';
+// import DeletePhotoContainer from '../DeletePhotoModal/DeletePhotoForm';
+import EditPhotoModal from '../EditPhotoModal';
+import DeletePhotoModal from '../DeletePhotoModal';
 
 const SinglePhotoPage = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -46,8 +46,8 @@ const SinglePhotoPage = () => {
                 <img src={photo.imageUrl} alt={photo.caption} />
                 {sessionUser.id === photo.User?.id ? (
                     <>
-                        <EditPhotoContainer photo={photo} />
-                        <DeletePhotoContainer photo={photo} />
+                        <EditPhotoModal photo={photo} />
+                        <DeletePhotoModal photo={photo} />
                     </>
                 ) : (
                     ""
