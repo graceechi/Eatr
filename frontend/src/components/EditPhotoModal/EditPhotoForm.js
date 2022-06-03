@@ -34,7 +34,7 @@ function EditPhotoContainer( { setShowModal } ) {
                         <form onSubmit={handleSubmit}>
                             <div className='form-header-title'>Edit Caption</div>
                             <textarea className='textarea-container' type='text' value={caption} placeholder='Caption' onChange={e => setCaption(e.target.value)} />
-                            <button className='save-btn' type='submit' onClick={() => setShowModal(false)}>Save</button>
+                            <button className='save-btn' type='submit'>Save</button>
                             <button className='cancel-btn' onClick={() => setShowModal(false)}>Cancel</button>
                         </form>
                     </div>
