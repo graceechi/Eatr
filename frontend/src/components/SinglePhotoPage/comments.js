@@ -15,17 +15,10 @@ const Comments = () => {
 
     // getting/filtering comments from DB
     const comments = useSelector(state => state.comments.entries);
-    console.log('comments on this photo', comments); // object of arrays
+    // console.log('comments on this photo', comments); // object of arrays
 
     let allComments = Object.values(comments);
-    console.log('allComments', allComments);
-
-    let userComments = Object.values(comments).filter(comment => comment.userId === sessionUser.id)
-    console.log('userComments', userComments);
-
-    let otherComments = Object.values(comments).filter(comment => comment.userId !== sessionUser.id)
-    console.log('otherComments', otherComments);
-
+    // console.log('allComments', allComments);
 
     useEffect(() => {
         dispatch(loadComments(id));

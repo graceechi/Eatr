@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
 import DemoButton from "../DemoButton";
 
 function LoginFormContainer() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  // if (sessionUser) return (
-  //   <Redirect to="/explore" />
-  // );
-  if (sessionUser) history.push("/explore");
+  if (sessionUser) return (
+    <Redirect to="/explore" />
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,19 +24,12 @@ function LoginFormContainer() {
     //   password,
     // };
 
-    // history.push('/explore');
-
     return dispatch(sessionActions.sessionLogin({ credential, password }))
     .catch(async (res) => {
       const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
     });
   }
-
-  // const navSignup = e => {
-  //   e.preventDefault();
-  //   history.push('/signup');
-  // }
 
   return (
     <div className="login-page-container">
