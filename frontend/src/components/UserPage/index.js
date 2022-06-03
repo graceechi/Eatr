@@ -45,7 +45,7 @@ function UserPage() {
             </div>
             <div className='toggle-nav'>
                 <a href={`/users/${id}`} onClick={navPhotostream}>Photostream</a>
-                <a href={`/users/${id}/faves`} onClick={navFaves}>Faves</a>
+                {/* <a href={`/users/${id}/faves`} onClick={navFaves}>Faves</a> */}
             </div>
             <div className='grid-container'>
                 {userPhotoArr.map(photo => {

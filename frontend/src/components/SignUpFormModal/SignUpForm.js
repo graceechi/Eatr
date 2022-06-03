@@ -43,8 +43,7 @@ function SignUpFormContainer() {
     <div className="login-page-container">
         <div className="form-header">
             <div className="form-logo">
-              {/* FIND LOGO */}
-                <img src="" alt="logo" />
+                <img src="/photos/blue-food-icon.png" alt="logo" />
             </div>
         <div className="form-header-text">Sign up for Flavr</div>
         </div>

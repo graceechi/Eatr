@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
         <>
             <NavLink to={`/users/${sessionUser.id}`}>You</NavLink>
             <NavLink exact to="/explore">Explore</NavLink>
-            <NavLink to={`/faves`}>Faves</NavLink>
+            {/* <NavLink to={`/faves`}>Faves</NavLink> */}
         </>
         );
         sessionLinks = (

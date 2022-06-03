@@ -6,9 +6,13 @@
   }
 
   .user-info-container {
-    background-color: rgb(213, 185, 163);
-    /* background-image: url('../../../public/photos/25-cocktail.jpg'); */
-    height: 140px;
+    /* background-color: rgb(213, 185, 163); */
+    /* background-color: rgb(128, 184, 218); */
+    background-image: url('../../../public/photos/eat-dessert.png');
+    /* background-image: url('../../../public/photos/champagne-neon.png'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 200px;
     margin-top: 50px;
     width: 100%;
     padding: 20px;
@@ -18,8 +22,22 @@
     margin-left: 15vw;
   }
 
-  #user-name-text p, #user-email p {
-    color: rgb(27, 27, 27);
+  #user-name-text p {
+    /* color: rgb(27, 27, 27); */
+    /* color:rgb(213, 185, 163); */
+    color:whitesmoke;
+
+    text-shadow: 2px 2px 2px rgb(27, 27, 27);
+    font-size: 25px;
+  }
+
+  #user-email p {
+    /* color: rgb(27, 27, 27); */
+    /* color:rgb(213, 185, 163); */
+    color:whitesmoke;
+
+    text-shadow: 2px 2px 2px rgb(27, 27, 27);
+    font-size: 16px;
   }
 
   #user-name-text p {
