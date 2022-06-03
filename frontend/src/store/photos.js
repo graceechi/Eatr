@@ -67,7 +67,7 @@ export const updateUserPhoto = photo => async dispatch => {
 
   if (res.ok) {
     const updatedPhoto = await res.json();
-    dispatch(updatePhoto(updatedPhoto));
+    await dispatch(updatePhoto(updatedPhoto));
     return updatedPhoto;
   }
 }
@@ -92,7 +92,7 @@ export const uploadPhoto = data => async dispatch => {
 
   if (res.ok) {
     const photo = await res.json();
-    dispatch(addOnePhoto(photo));
+    await dispatch(addOnePhoto(photo));
     return photo;
   }
 }

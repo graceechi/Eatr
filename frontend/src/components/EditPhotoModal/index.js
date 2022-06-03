@@ -13,7 +13,7 @@ const EditPhotoModal = () => {
         </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditPhotoContainer />
+          <EditPhotoContainer setShowModal={setShowModal} />
         </Modal>
       )}
     </>
