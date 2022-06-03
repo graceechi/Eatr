@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import ExplorePage from './components/ExplorePage';
 import UserPage from './components/UserPage';
 import SinglePhotoPage from "./components/SinglePhotoPage";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,10 +39,10 @@ function App() {
           </Route>
           {/* <Route path="/faves">
             <FavePage />
-          </Route>
+          </Route> */}
           <Route>
             <PageNotFound />
-          </Route> */}
+          </Route>
         </Switch>
       )}
       {/* <Footer /> */}
