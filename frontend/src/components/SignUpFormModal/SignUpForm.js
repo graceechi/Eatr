@@ -61,6 +61,7 @@ function SignUpFormContainer() {
                 value={username}
                 placeholder="Enter a username"
                 onChange={(e) => setUsername(e.target.value)}
+                required
             ></input>
         </div>
 
@@ -72,6 +73,7 @@ function SignUpFormContainer() {
                 value={email}
                 placeholder="Enter an email"
                 onChange={(e) => setEmail(e.target.value)}
+                required
             ></input>
         </div>
 
@@ -83,6 +85,7 @@ function SignUpFormContainer() {
                 value={password}
                 placeholder="Enter a password"
                 onChange={(e) => setPassword(e.target.value)}
+                required
             ></input>
         </div>
 
@@ -94,6 +97,7 @@ function SignUpFormContainer() {
                 value={confirmPassword}
                 placeholder="Confirm your password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                required
             ></input>
         </div>
 
