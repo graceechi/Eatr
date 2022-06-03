@@ -29,6 +29,7 @@
 .photo-details {
     grid-area: 'details';
     padding: 20px 40px 0 230px;
+    /* margin-left: 100px; */
 }
 
 #photo-caption {
@@ -42,7 +43,7 @@
 }
 
 #photographer:hover {
-    color: #c0bebe;
+    color: rgb(56, 55, 55);
     transition-duration: 0.3s;
 }
 
@@ -94,6 +95,15 @@ p {
     margin: 0;
 }
 
+#comment-username {
+  font-weight: bold;
+  color: rgb(213, 185, 163);
+}
+
+#comment-username:hover {
+  color: rgb(56, 55, 55);
+}
+
 .user-comment, .session-user-comment {
     font-size: 15px;
     margin: 5px 0 15px 0;
@@ -117,6 +127,17 @@ a p:hover {
     background-color: #212124;
     color: white;
     transition-duration: 0.3s;
+}
+
+.delete-comment-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.comment-details {
+  display: inline;
+
 }
 
 hr {

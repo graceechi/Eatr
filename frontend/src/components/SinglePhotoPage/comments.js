@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect, NavLink, useHistory } from 'react-router-dom';
 import { loadComments, createComment, deleteComment } from '../../store/comments';
-
+import DeleteCommentModal from '../DeleteCommentModal/DeleteComment';
 import './singlephotopage.css';
 
 const Comments = () => {
     const sessionUser = useSelector(state => state.session.user);
-    const history = useHistory();
+    // const history = useHistory();
     const dispatch = useDispatch();
     const { id } = useParams();
 
@@ -45,49 +45,27 @@ const Comments = () => {
     // }
 
     return (
-        <div className="comment-container">
-                {allComments.map((comment) => (
-                    <div className="comment" key={`${comment.id}`}>
-                    <div className="comment-details">
-                      <NavLink
-                        to={`/users/${comment.userId}`}
-                      >{`@${comment.User.username}`}</NavLink>
-                      <p>{comment.comment}</p>
-                    </div>
+        <div className="comments-container">
+            {allComments.map((comment) => (
+                <div className="comment" key={`${comment.id}`}>
+                <div className="comment-details">
+                    <NavLink id='comment-username'
+                    to={`/users/${comment.userId}`}
+                    >{`@${comment.User.username}`}</NavLink>
+                    <p>{comment.comment}</p>
                     {comment.User.id === sessionUser.id ? (
-                      <div className="delete-comment-btn">
-                        {/* <DeleteComment comment={comment} /> */}
-                      </div>
+                        // <div className="delete-comment-btn">
+                            <DeleteCommentModal comment={comment} />
+                        // </div>
                     ) : (
-                      ""
+                        ""
                     )}
-                  </div>
-                ))}
-              </div>
+                </div>
+                </div>
+            ))}
+        </div>
     );
 
-    // comments owned by user
-    // if (sessionUser.id === userComments.userId) {
-    //     return (
-    //         <div className='photos-comments-faves'>
-    //             <div className='comments-container'>
-    //                 {Object.values(otherComments).map(comment => (
-    //                     <div key={comment.id}>
-    //                         <a href={`/users/${comment.User.id}`} onClick={e => {
-    //                             e.preventDefault();
-    //                             history.push(`/users/${comment.User.id}`)
-    //                         }}>
-    //                             <p className='comment-username'>{comment.User.username}</p>
-    //                         </a>
-    //                         <p className='user-comment'>{comment.comment}</p>
-    //                     </div>
-    //                 ))}
-    //             </div>
-    //         </div>
-    //     )
-    // }
-
-    // comments not owned by user
 }
 
 export default Comments;

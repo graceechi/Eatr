@@ -67,9 +67,9 @@ const SinglePhotoPage = () => {
                         <p id='faves-text'>109 people faved this</p>
                     </div>
                     <hr/>
+                    <Comments />
                 </div>
                 {/* <div className='tags-container'>Tags Coming Soon</div> */}
-                <Comments />
             </div>
         </>
     )
