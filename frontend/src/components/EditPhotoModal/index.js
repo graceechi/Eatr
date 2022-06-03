@@ -6,10 +6,6 @@ import EditPhotoContainer from "./EditPhotoForm";
 const EditPhotoModal = () => {
   const [showModal, setShowModal] = useState(false);
 
-//   const closeModal = () => {
-//     setShowModal(false);
-//   }
-
   return (
     <>
         <button onClick={() => setShowModal(true)} id='edit-btn'>
@@ -17,7 +13,7 @@ const EditPhotoModal = () => {
         </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditPhotoContainer />
+          <EditPhotoContainer setShowModal={setShowModal} />
         </Modal>
       )}
     </>

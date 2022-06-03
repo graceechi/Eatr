@@ -5,9 +5,9 @@ import { deleteUserPhoto } from '../../store/photos';
 import './deletephoto.css';
 // import { Modal } from '../../context/Modal';
 
-function DeletePhotoContainer() {
+function DeletePhotoContainer( { setShowModal }) {
     // const sessionUser = useSelector(state => state.session.user);
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
     const {id} = useParams();
 

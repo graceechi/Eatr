@@ -5,8 +5,8 @@ import { updateUserPhoto } from '../../store/photos';
 // import { Modal } from '../../context/Modal';
 import "./editphotomodal.css";
 
-function EditPhotoContainer({}) {
-    const [showModal, setShowModal] = useState(false);
+function EditPhotoContainer( { setShowModal }) {
+    // const [showModal, setShowModal] = useState(false);
     const dispatch = useDispatch();
     const {id} = useParams();
 

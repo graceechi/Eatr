@@ -13,7 +13,7 @@ function DeletePhotoModal({ photo }) {
         </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <DeletePhotoContainer />
+          <DeletePhotoContainer setShowModal={setShowModal} />
         </Modal>
       )}
     </>
