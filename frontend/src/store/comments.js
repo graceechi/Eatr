@@ -66,9 +66,7 @@ const commentsReducer = (state = initialState, action) => {
 
         case ADD_COMMENT: {
             const newState = { ...state, entries: {...state.entries} };
-            action.comments.forEach(comment => {
-                newState.entries[comment.id] = comment;
-            });
+            newState.entries[action.comment.id] = action.comment;
           return newState;
         }
 

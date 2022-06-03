@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect, NavLink, useHistory } from 'react-router-dom';
-import { loadComments, createComment, deleteComment } from '../../store/comments';
+import { loadComments, createComment } from '../../store/comments';
 import DeleteCommentModal from '../DeleteCommentModal/DeleteComment';
 import './singlephotopage.css';
 
@@ -11,8 +11,7 @@ const Comments = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
 
-    // const [newComment, setNewComment] = useState('');
-    // const [deletedCommentId, setDeletedCommentId] = useState('');
+    const [newComment, setNewComment] = useState('');
 
     // getting/filtering comments from DB
     const comments = useSelector(state => state.comments.entries);
@@ -32,17 +31,18 @@ const Comments = () => {
         dispatch(loadComments(id));
     }, [dispatch, id]);
 
-    // const addComment = async e => {
-    //     e.preventDefault();
+    const addComment = async e => {
+        e.preventDefault();
 
-    //     const comment = {
-    //         userId: sessionUser.id,
-    //         photoId: id,
-    //         comment: newComment
-    //     }
+        const comment = {
+            userId: sessionUser.id,
+            photoId: id,
+            comment: newComment
+        }
 
-    //     dispatch()
-    // }
+        dispatch(createComment(comment));
+        setNewComment('');
+    }
 
     return (
         <div className="comments-container">
@@ -63,6 +63,14 @@ const Comments = () => {
                 </div>
                 </div>
             ))}
+            <hr id='create-comment-hr' />
+            {/* insert add comment textbox */}
+            <div className='create-comment-container'>
+                <form onSubmit={addComment}>
+                    <textarea className='create-comment-box' value={newComment} onChange={e => setNewComment(e.target.value)} placeholder=" Leave a comment!" required ></textarea>
+                    <button id='create-comment-btn'>Comment</button>
+                </form>
+            </div>
         </div>
     );
 

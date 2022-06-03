@@ -73,11 +73,6 @@
     padding: 0 40px 150px 230px;
 }
 
-.comments-container {
-    grid-area: 'comments';
-    align-items: flex-end;
-}
-
 faves-container {
     grid-area: 'faves';
     padding: 20px 40px 80px 0;
@@ -157,21 +152,25 @@ hr#comments-hr {
     justify-content: space-between;
 }
 
-.comment-box {
+.create-comment-box {
     width: 93%;
     min-height: 80px;
     max-width: 93%;
+    border-radius: 5px;
 }
 
-@media screen and (min-width: 1025px) {
-    .comment-box {
-      width: 96%;
-      min-height: 80px;
-      max-width: 96%;
-    }
+#create-comment-btn {
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+  color: white;
 }
 
-@media screen and (max-width: 1024px) {
+#create-comment-btn:hover {
+  background-color: black;
+}
+
+@media screen and (min-width: 1024px) {
     .single-photo-container img {
       height: 55vh;
     }
@@ -188,13 +187,13 @@ hr#comments-hr {
     .photos-comments-faves {
       padding: 0 50px 100px;
     }
-
+/*
     .faves-container {
       padding: 30px 50px 10px;
-    }
+    } */
 }
 
-@media screen and (max-width: 500px)  {
+@media screen and (max-width: 1023px)  {
     .single-photo-container img {
       width: 35vh;
       height: auto;
