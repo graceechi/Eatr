@@ -31,11 +31,11 @@ h1 {
   margin-right: 30px;
 }
 
-.nav-logo {
+/* .nav-logo {
   width: 180px;
   height: 90px;
   margin-left: 30px;
-}
+} */
 
 .nav-right {
   justify-self: flex-end;

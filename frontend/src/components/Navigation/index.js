@@ -43,7 +43,7 @@ function Navigation({ isLoaded }) {
             <NavLink exact to="/">
             {/* FIND IMAGE LOGO FOR FLAVR */}
             {/* <img
-                src=""
+                src="/photos/blue-food-icon.png"
                 className="nav-logo"
                 alt="logo"
             ></img> */}
