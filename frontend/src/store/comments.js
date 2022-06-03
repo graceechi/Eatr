@@ -63,6 +63,15 @@ const commentsReducer = (state = initialState, action) => {
             });
           return newState;
         }
+
+        case ADD_COMMENT: {
+            const newState = { ...state, entries: {...state.entries} };
+            action.comments.forEach(comment => {
+                newState.entries[comment.id] = comment;
+            });
+          return newState;
+        }
+
         case REMOVE_COMMENT: {
             const newState = { ...state, entries: {...state.entries} }
             delete newState.entries[action.comment];
