@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 function PageNotFound() {
     return (
         <div className='page-not-found'>
-            <img id='food-icon' src='/photos/blue-food-icon.png' alt='food-icon'/>
+            <img id='food-icon' src='/photos/favicon.ico' alt='food-icon'/>
             <p id='page-not-found-title'>
                 Oops, page not found!
             </p>

@@ -42,9 +42,10 @@ const Comments = () => {
             {allComments.map((comment) => (
                 <div className="comment" key={`${comment.id}`}>
                 <div className="comment-details">
-                    <NavLink id='comment-username'
+                    {/* <NavLink id='comment-username'
                     to={`/users/${comment.userId}`}
-                    >{`@${comment.User.username}`}</NavLink>
+                    >{`@${comment.User.username}`}</NavLink> */}
+                    <span id='comment-username'>{`@${comment.User.username}`}</span>
                     <p>{comment.comment}</p>
                     {comment.User.id === sessionUser.id ? (
                         // <div className="delete-comment-btn">
