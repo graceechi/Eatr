@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import './LoginForm.css';
 import DemoButton from "../DemoButton";
 
 function LoginFormContainer() {
   const dispatch = useDispatch();
+  // const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return (
-    <Redirect to="/explore" />
+    <Redirect to='/explore' />
   );
 
   const handleSubmit = (e) => {
@@ -23,6 +24,10 @@ function LoginFormContainer() {
     //   credential,
     //   password,
     // };
+
+  // if (sessionUser) return (
+  //   <Redirect to={`/users/${sessionUser.id}`} />
+  // );
 
     return dispatch(sessionActions.sessionLogin({ credential, password }))
     .catch(async (res) => {

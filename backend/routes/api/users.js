@@ -49,7 +49,7 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
 // get user profile page with photostream
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const user = await Photo.findAll({ where: { userId: id }, include: User })
+  const user = await Photo.findAll({ where: { userId: id }, include: User });
   return res.json(user);
 }))
 

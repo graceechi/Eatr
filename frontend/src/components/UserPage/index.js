@@ -10,9 +10,9 @@ function UserPage() {
     const history = useHistory();
     const { id } = useParams();
     const userPhotos = useSelector(state => state.photos.entries)
-    // console.log('UserPage comp', userPhotos)
+    console.log('UserPage comp', userPhotos)
     const userPhotoArr = Object.values(userPhotos);
-    const user = Object.values(userPhotoArr)[0]?.User;
+    const user = Object.values(userPhotos)[0]?.User;
     console.log('user', user);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ function UserPage() {
 
     if (!sessionUser) {
         return (
-            <Redirect to='/login' />
+            <Redirect to='/' />
         )
     }
 
@@ -39,11 +39,11 @@ function UserPage() {
         <div className='user-photostream'>
             <div className='user-info-container'>
                 <div id='user-name-text'>
-                    <p>@{user.username}</p>
+                    <p>@{sessionUser.username}</p>
                 </div>
-                {/* <div id='user-email'>
-                    <p>{user.email}</p>
-                </div> */}
+                <div id='user-email'>
+                    <p>{sessionUser.email}</p>
+                </div>
             </div>
             <div className='toggle-nav'>
                 <a href={`/users/${id}`} onClick={navPhotostream}>Photostream</a>

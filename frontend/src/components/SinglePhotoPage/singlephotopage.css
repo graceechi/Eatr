@@ -42,10 +42,10 @@
     font-size: 22px;
 }
 
-#photographer:hover {
+/* #photographer:hover {
     color: rgb(56, 55, 55);
     transition-duration: 0.3s;
-}
+} */
 
 #photo-title {
     font-weight: bold;
@@ -95,9 +95,9 @@ p {
   color: rgb(213, 185, 163);
 }
 
-#comment-username:hover {
+/* #comment-username:hover {
   color: rgb(56, 55, 55);
-}
+} */
 
 .user-comment, .session-user-comment {
     font-size: 15px;
