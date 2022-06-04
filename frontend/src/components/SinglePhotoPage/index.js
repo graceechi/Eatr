@@ -60,7 +60,8 @@ const SinglePhotoPage = () => {
             <div className='details-comments'>
                 <div className='photo-details'>
                     <div className='user-follow'>
-                        <a id='photographer' href={`/users/${photo.User?.id}`} onClick={navProfile}>@{photo.User?.username}</a>
+                        {/* <a id='photographer' href={`/users/${photo.User?.id}`} onClick={navProfile}>@{photo.User?.username}</a> */}
+                        <span id='photographer'>@{photo.User?.username}</span>
                     </div>
                     <div className='caption'>
                         <p id='photo-caption'>{photo.caption}</p>
