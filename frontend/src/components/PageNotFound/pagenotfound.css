@@ -1,0 +1,30 @@
+.page-not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 110px;
+    width: 100%;
+}
+
+#page-not-found-title {
+    color: rgb(27, 27, 27);
+    font-size: 27px;
+    text-align: center;
+}
+
+#page-not-found-text {
+    margin-top: 0px;
+    color: rgb(27, 27, 27);
+    font-size: 20px;
+    text-align: center;
+}
+
+span#back-to-home {
+    font-weight: bold;
+}
+
+#food-icon {
+    width: 100px;
+    height: 100px;
+}
