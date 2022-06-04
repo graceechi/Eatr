@@ -38,8 +38,8 @@ function App() {
           </Route>
           {/* <Route path="/faves">
             <FavePage />
-          </Route>
-          <Route>
+          </Route> */}
+          {/* <Route>
             <PageNotFound />
           </Route> */}
         </Switch>
