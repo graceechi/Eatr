@@ -47,7 +47,8 @@ Flavr, inspired by <a href="https://flickr.com/" target="_blank">Flickr</a>, is 
 ![photo-comment-page-2](https://user-images.githubusercontent.com/90019010/172035436-3c2c1a01-7dd4-42bf-8d85-d044adf6d48e.png)
 ### Upload Photo
 ![upload-photo](https://user-images.githubusercontent.com/90019010/172035291-eda516d7-5792-442f-a7cc-658d1a5e5f53.png)
-
+### 404 Page
+![Screen Shot 2022-06-04 at 11 54 55 PM](https://user-images.githubusercontent.com/90019010/172035644-068abc13-27a0-454d-a30a-f486a02f0e97.png)
 
 ## Stretch Goals
 - [ ] Favorites
