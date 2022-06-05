@@ -20,11 +20,19 @@
 - CSURF
 - Express Validator
 
+## How To Launch
+1. Download or clone this repository
+2. Install dependencies
+3. Create a .env file based on the .env.example
+4. In root terminal psql, create a user and database based on your .env
+5. In backend terminal, migrate and seed the database
+6. Run both the frontend and backend servers in 2 terminals simultaneously
+
 ## Key Features
 - Users can view, upload, edit, and delete photos
 - Users can view, create, and delete comments
 - User profile page contains their photostream
-- Log in, sign up, edit, and delete forms use modals
+- Log in, sign up, upload, edit, and delete forms use modals
 - AJAX is used to render elements asynchronously
 - App authenticates users with validation forms and prevents CSRF attacks
 
