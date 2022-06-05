@@ -41,7 +41,7 @@ function SignUpFormContainer() {
     <div className="login-page-container">
         <div className="form-header">
             <div className="form-logo">
-                <img src="/photos/blue-food-icon.png" alt="logo" />
+                <img src="/photos/favicon.ico" alt="logo" />
             </div>
         <div className="form-header-text">Sign up for Flavr</div>
         </div>

@@ -39,11 +39,11 @@ function UserPage() {
         <div className='user-photostream'>
             <div className='user-info-container'>
                 <div id='user-name-text'>
-                    <p>@{user.username}</p>
+                    <p>@{sessionUser.username}</p>
                 </div>
-                {/* <div id='user-email'>
-                    <p>{user.email}</p>
-                </div> */}
+                <div id='user-email'>
+                    <p>{sessionUser.email}</p>
+                </div>
             </div>
             <div className='toggle-nav'>
                 <a href={`/users/${id}`} onClick={navPhotostream}>Photostream</a>

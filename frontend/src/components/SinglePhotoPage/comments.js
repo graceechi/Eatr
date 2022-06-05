@@ -45,6 +45,7 @@ const Comments = () => {
                     <NavLink id='comment-username'
                     to={`/users/${comment.userId}`}
                     >{`@${comment.User.username}`}</NavLink>
+                    {/* <p id='comment-username'>{`@${comment.User.username}`}</p> */}
                     <p>{comment.comment}</p>
                     {comment.User.id === sessionUser.id ? (
                         // <div className="delete-comment-btn">
