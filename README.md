@@ -1,13 +1,7 @@
 # Flavr
-Flavr, inspired by <a href="https://flickr.com/" target="_blank">Flickr</a>, is a platform where foodies can share their food photography and interests. 
+[Flavr](https://flavr.herokuapp.com/), inspired by <a href="https://flickr.com/" target="_blank">Flickr</a>, is a platform where foodies can share their food photography and interests. 
 
 ![splash-page](https://user-images.githubusercontent.com/90019010/172034776-cee205a7-155a-4133-b5ed-db0da1174dcb.png)
-
-[Live Site](https://flavr.herokuapp.com/)
-<br>
-[Database Schema](https://github.com/graceechi/Flavr/wiki/Database-Schema)
-<br>
-[Features List](https://github.com/graceechi/Flavr/wiki/Features-List)
 
 ## Technologies Used
 #### Front End
@@ -49,6 +43,7 @@ Flavr, inspired by <a href="https://flickr.com/" target="_blank">Flickr</a>, is 
 ![upload-photo](https://user-images.githubusercontent.com/90019010/172035291-eda516d7-5792-442f-a7cc-658d1a5e5f53.png)
 ### 404 Page
 ![Screen Shot 2022-06-04 at 11 54 55 PM](https://user-images.githubusercontent.com/90019010/172035644-068abc13-27a0-454d-a30a-f486a02f0e97.png)
+- When users route to a page that does not exist
 
 ## Stretch Goals
 - [ ] Favorites
