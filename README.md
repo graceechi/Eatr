@@ -48,3 +48,8 @@ Flavr, inspired by <a href="https://flickr.com/" target="_blank">Flickr</a>, is 
 ### Upload Photo
 ![upload-photo](https://user-images.githubusercontent.com/90019010/172035291-eda516d7-5792-442f-a7cc-658d1a5e5f53.png)
 
+
+## Stretch Goals
+- [ ] Favorites
+- [ ] Tags
+- [ ] Search
