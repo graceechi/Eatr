@@ -46,18 +46,21 @@ const Comments = () => {
                         to={`/users/${comment.userId}`}
                         >{`@${comment.User.username}`}</NavLink> */}
                         {/* {`@${comment.User.username}`} */}
-                        <p id='comment-text'>{`@${comment.User.username}`}<span id='comment-text-span'> {comment.comment}</span></p>
-                        {comment.User.id === sessionUser.id ? (
-                            // <div className="delete-comment-btn">
-                                <DeleteCommentModal comment={comment} />
-                            // </div>
-                        ) : (
-                            ""
-                        )}
+                        <p id='comment-text'>
+                            {`@${comment.User.username}`}
+                            <span id='comment-text-span'> {comment.comment} </span>
+                            {comment.User.id === sessionUser.id ? (
+                                // <div className="delete-comment-btn">
+                                    <DeleteCommentModal comment={comment} />
+                                // </div>
+                            ) : (
+                                ""
+                            )}
+                        </p>
                     </div>
                 </div>
             ))}
-            <hr id='create-comment-hr' />
+            {/* <hr id='create-comment-hr' /> */}
             {/* insert add comment textbox */}
             <div className='create-comment-container'>
                 <form onSubmit={addComment}>
