@@ -46,7 +46,8 @@ function UserPage() {
                 </div>
             </div>
             <div className='toggle-nav'>
-                <a href={`/users/${id}`} onClick={navPhotostream}>Photostream</a>
+                {/* <a href={`/users/${id}`} onClick={navPhotostream}>Photostream</a> */}
+                <span>Photostream</span>
                 {/* <a href={`/users/${id}/faves`} onClick={navFaves}>Faves</a> */}
             </div>
             <div className='grid-container'>

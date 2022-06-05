@@ -132,7 +132,17 @@ a p:hover {
 
 .comment-details {
   display: inline;
+  color:rgb(213, 185, 163)
+}
 
+#comment-text {
+  color: rgb(213, 185, 163);
+  font-weight: bold;
+}
+
+#comment-text-span {
+  color: black;
+  font-weight: normal;
 }
 
 hr {

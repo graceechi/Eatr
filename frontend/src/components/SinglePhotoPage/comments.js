@@ -41,20 +41,20 @@ const Comments = () => {
         <div className="comments-container">
             {allComments.map((comment) => (
                 <div className="comment" key={`${comment.id}`}>
-                <div className="comment-details">
-                    <NavLink id='comment-username'
-                    to={`/users/${comment.userId}`}
-                    >{`@${comment.User.username}`}</NavLink>
-                    {/* <p id='comment-username'>{`@${comment.User.username}`}</p> */}
-                    <p>{comment.comment}</p>
-                    {comment.User.id === sessionUser.id ? (
-                        // <div className="delete-comment-btn">
-                            <DeleteCommentModal comment={comment} />
-                        // </div>
-                    ) : (
-                        ""
-                    )}
-                </div>
+                    <div className="comment-details">
+                        {/* <NavLink id='comment-username'
+                        to={`/users/${comment.userId}`}
+                        >{`@${comment.User.username}`}</NavLink> */}
+                        {/* {`@${comment.User.username}`} */}
+                        <p id='comment-text'>{`@${comment.User.username}`}<span id='comment-text-span'> {comment.comment}</span></p>
+                        {comment.User.id === sessionUser.id ? (
+                            // <div className="delete-comment-btn">
+                                <DeleteCommentModal comment={comment} />
+                            // </div>
+                        ) : (
+                            ""
+                        )}
+                    </div>
                 </div>
             ))}
             <hr id='create-comment-hr' />
