@@ -14,11 +14,9 @@ const Comments = () => {
     const [newComment, setNewComment] = useState('');
 
     // getting/filtering comments from DB
-    const comments = useSelector(state => state.comments.entries);
-    // console.log('comments on this photo', comments); // object of arrays
+    const comments = useSelector(state => state.comments.entries); // object of arrays
 
     let allComments = Object.values(comments);
-    // console.log('allComments', allComments);
 
     useEffect(() => {
         dispatch(loadComments(id));

@@ -10,7 +10,7 @@ function ExplorePage() {
     const dispatch = useDispatch();
     const history = useHistory();
     let photos = useSelector(state => state.photos.entries);
-    // console.log('explore page', photos)
+
     let photoArr = Object.values(photos);
 
     useEffect(() => {

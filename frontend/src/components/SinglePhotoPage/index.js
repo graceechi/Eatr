@@ -14,10 +14,9 @@ const SinglePhotoPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [isLoaded, setIsLoaded] = useState(false);
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
     const { id } = useParams();
     const photo = useSelector(state => state.photos.entries[id]);
-    // console.log(photo)
 
     useEffect(() => {
         dispatch(getOnePhoto(id));
@@ -25,10 +24,10 @@ const SinglePhotoPage = () => {
         setIsLoaded(true);
     }, [dispatch, id])
 
-    const navProfile = e => {
-        e.preventDefault();
-        history.push(`/users/${photo.User?.id}`)
-    }
+    // const navProfile = e => {
+    //     e.preventDefault();
+    //     history.push(`/users/${photo.User?.id}`)
+    // }
 
     if (!sessionUser) {
         return (

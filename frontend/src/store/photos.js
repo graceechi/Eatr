@@ -101,7 +101,7 @@ export const getUserPhotos = id => async dispatch => {
   const res = await csrfFetch(`/api/users/${id}`)
   if (res.ok) {
     const photos = await res.json();
-    console.log('store photo', photos)
+
     dispatch(loadUserPhotos(Object.values(photos)));
   }
 }

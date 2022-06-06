@@ -13,7 +13,6 @@ function DeletePhotoContainer( { setShowModal }) {
 
     const history = useHistory();
     const photo = useSelector(state => state.photos.entries[id])
-    // console.log(photo)
 
     const handleDelete = async e => {
         e.preventDefault();
