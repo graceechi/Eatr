@@ -81,6 +81,7 @@ export const deleteUserPhoto = id => async dispatch => {
   }
 }
 
+// upload a photo
 export const uploadPhoto = data => async dispatch => {
   const res = await csrfFetch(`/api/photos/`, {
     method: 'POST',
@@ -96,6 +97,33 @@ export const uploadPhoto = data => async dispatch => {
     return photo;
   }
 }
+
+//  upload a photo with AWS S3
+export const uploadPhotoAws = data => async dispatch => {
+  const { userId, caption, photo } = data;
+  const formData = new FormData();
+  formData.append("userId", userId);
+  if (caption) formData.append("caption", caption);
+  if (photo) formData.append("photo", photo);
+
+  const res = await csrfFetch(`/api/photos/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    },
+    body: formData,
+  });
+
+  if (res.ok) {
+    const photo = await res.json();
+    dispatch(addOnePhoto(photo));
+    return photo;
+  } else {
+    const errors = await res.json();
+    console.log(errors);
+  }
+}
+
 
 export const getUserPhotos = id => async dispatch => {
   const res = await csrfFetch(`/api/users/${id}`)
