@@ -103,10 +103,10 @@ export const uploadPhotoAws = data => async dispatch => {
   const { userId, caption, photo } = data;
   const formData = new FormData();
   formData.append("userId", userId);
-  if (caption) formData.append("caption", caption);
+  formData.append("caption", caption);
   if (photo) formData.append("photo", photo);
 
-  const res = await csrfFetch(`/api/photos/`, {
+  const res = await csrfFetch(`/api/photos`, {
     method: 'POST',
     headers: {
       'Content-Type': 'multipart/form-data'
@@ -114,14 +114,12 @@ export const uploadPhotoAws = data => async dispatch => {
     body: formData,
   });
 
-  if (res.ok) {
-    const photo = await res.json();
-    dispatch(addOnePhoto(photo));
-    return photo;
-  } else {
-    const errors = await res.json();
-    console.log(errors);
+  const newPhoto = await res.json();
+  if (newPhoto) {
+    dispatch(addOnePhoto(newPhoto));
   }
+  return newPhoto;
+
 }
 
 
