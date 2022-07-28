@@ -23,21 +23,20 @@ router.post(
     singleMulterUpload("image"),
     asyncHandler(async (req, res) => {
       const { userId, caption } = req.body;
-      let { image } = req.body;
+      // let { image } = req.body;
 
-      if (req.file) {
-        imageUrl = await singlePublicFileUpload(req.file);
-      } else {
-        imageUrl = image;
-      }
-      // const imageUrl = await singlePublicFileUpload(req.file);
+      // if (req.file) {
+      //   imageUrl = await singlePublicFileUpload(req.file);
+      // } else {
+      //   imageUrl = image;
+      // }
+      const imageUrl = await singlePublicFileUpload(req.file);
 
       const newPhoto = await Photo.create({
         userId,
         caption,
         imageUrl,
       });
-      console.log('---------------------------this is newPhoto in backend route', newPhoto)
       // const createdPhoto = await Photo.findByPk(newPhoto.id, {
       //   include: [{ model: User }],
       // });
