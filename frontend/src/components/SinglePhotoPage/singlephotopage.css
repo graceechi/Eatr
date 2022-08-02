@@ -38,7 +38,7 @@
 
 #photographer {
     font-weight: bold;
-    color: rgb(213, 185, 163);
+    color: rgb(180, 108, 53);
     font-size: 22px;
 }
 
@@ -136,7 +136,7 @@ a p:hover {
 }
 
 #comment-text {
-  color: rgb(213, 185, 163);
+  color: rgb(180, 108, 53);
   font-weight: bold;
 }
 

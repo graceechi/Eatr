@@ -25,7 +25,7 @@ function ExplorePage() {
         <>
         <h1>Hi from Explore Page</h1>
         <div className="body-container">
-            <p>Explore</p>
+            <p className='explore-title'>Explore</p>
             <div className="grid-container">
                 {photoArr.map((photo) => {
                     return (

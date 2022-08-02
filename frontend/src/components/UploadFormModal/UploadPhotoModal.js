@@ -44,8 +44,8 @@ function UploadPhotoModal({ user }) {
     useEffect(() => {
         const errors = [];
 
-        if (!photo) errors.push("Please upload a photo!");
         if (!caption) errors.push("Please enter a caption.");
+        if (!photo) errors.push("Please upload a photo.");
 
         setValidationErrors(errors);
     }, [photo, caption])
@@ -61,7 +61,7 @@ function UploadPhotoModal({ user }) {
                 <div className='line-skip'></div>
                 <div className="form-header-text">Upload Photo</div>
                 <div className='line-skip'></div>
-                <ul className="errors-container">
+                <ul className="upload-errors-container">
                     {validationErrors &&
                         validationErrors.map((err, i) => (
                             <li className="error" key={i}>

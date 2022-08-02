@@ -36,6 +36,12 @@
     font-size: 17px;
 }
 
+.upload-errors-container {
+    padding: 0px;
+    margin-top: 0px;
+    text-align: center;
+}
+
 .input-container {
     display: flex;
     flex-direction: column;
@@ -52,6 +58,10 @@
     height: 25px;
     /* border-radius: 3px; */
 }
+
+/* .file-input {
+    align-items: center;
+} */
 
 #submitBtn, #cancelBtn {
     width: 82%;
