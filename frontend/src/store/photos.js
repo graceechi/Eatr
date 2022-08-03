@@ -106,7 +106,7 @@ export const uploadPhotoAws = data => async dispatch => {
   formData.append("caption", caption);
   formData.append("image", photo);
 
-  console.log('----DO I HIT THIS AWS UPLOAD THUNK????')
+  // console.log('----DO I HIT THIS AWS UPLOAD THUNK????')
   const res = await csrfFetch(`/api/photos`, {
     method: 'POST',
     headers: {
@@ -115,7 +115,7 @@ export const uploadPhotoAws = data => async dispatch => {
     body: formData,
   });
 
-  console.log('----PART 2 OF AWS THUNK')
+  // console.log('----PART 2 OF AWS THUNK')
   const newPhoto = await res.json();
   if (newPhoto) {
     dispatch(addOnePhoto(newPhoto));

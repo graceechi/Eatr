@@ -42,6 +42,15 @@
     text-align: center;
 }
 
+.upload-caption-error-messages {
+    color: rgb(208, 73, 73);
+    padding: 0px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1em;
+    padding: 0px 10px 0px 10px;
+}
+
 .input-container {
     display: flex;
     flex-direction: column;
