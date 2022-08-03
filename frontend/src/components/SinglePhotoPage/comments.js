@@ -12,6 +12,7 @@ const Comments = () => {
     const { id } = useParams();
 
     const [newComment, setNewComment] = useState('');
+    const [errors, setErrors] = useState([]);
 
     // getting/filtering comments from DB
     const comments = useSelector(state => state.comments.entries); // object of arrays
@@ -22,17 +23,34 @@ const Comments = () => {
         dispatch(loadComments(id));
     }, [dispatch, id]);
 
+    useEffect(() => {
+        if (newComment && newComment.length >= 250) {
+            setErrors(["Comments should be less than 250 characters."])
+        } else if (newComment.length === 0) {
+            setErrors(["Comments should be at least 1 character and no empty entries."])
+        } else {
+            setErrors([])
+        }
+    }, [newComment])
+
     const addComment = async e => {
         e.preventDefault();
 
-        const comment = {
-            userId: sessionUser.id,
-            photoId: id,
-            comment: newComment
+        if (newComment.length === 0) {
+            setNewComment('');
+        } else if (newComment.trim().length === 0) {
+            setNewComment('');
+        } else if (newComment.length > 250) {
+            setNewComment('');
+        } else {
+            const comment = {
+                userId: sessionUser.id,
+                photoId: id,
+                comment: newComment
+            }
+            dispatch(createComment(comment));
+            setNewComment('');
         }
-
-        dispatch(createComment(comment));
-        setNewComment('');
     }
 
     return (
@@ -61,6 +79,11 @@ const Comments = () => {
             {/* <hr id='create-comment-hr' /> */}
             {/* insert add comment textbox */}
             <div className='create-comment-container'>
+                <div>
+                    {errors.map((error, ind) => (
+                        <div className='create-comment-error-messages' key={ind}>{error}</div>
+                    ))}
+                </div>
                 <form onSubmit={addComment}>
                     <textarea className='create-comment-box' value={newComment} onChange={e => setNewComment(e.target.value)} placeholder=" Leave a comment!" required ></textarea>
                     <button id='create-comment-btn'>Comment</button>

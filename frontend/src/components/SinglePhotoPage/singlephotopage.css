@@ -169,6 +169,15 @@ hr#comments-hr {
     border-radius: 5px;
 }
 
+.create-comment-error-messages {
+    color: rgb(208, 73, 73);
+    padding: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 1em;
+    padding: 0px 10px 0px 10px;
+}
+
 #create-comment-btn {
   padding: 5px;
   border-radius: 5px;
