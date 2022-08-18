@@ -31,6 +31,16 @@ router.post('/:id(\\d+)', requireAuth, restoreUser, asyncHandler(async(req, res)
     return res.json(data);
 }))
 
+// update comment
+router.put('/:id(\\d+)', requireAuth, restoreUser, asyncHandler(async(req, res) => {
+    const comment = await Comment.findByPk(req.params.commentId);
+    const newComment = await comment.update(req.body);
+    const editedComment = await Comment.findByPk(newComment.id, {
+        include: [{ model: User }]
+    });
+    res.json({ editedComment });
+}))
+
 // delete comment
 router.delete('/:id(\\d+)', requireAuth, asyncHandler(async(req, res) => {
     const comment = await Comment.findByPk(req.params.id);
