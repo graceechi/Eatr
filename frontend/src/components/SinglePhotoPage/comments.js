@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect, NavLink, useHistory } from 'react-router-dom';
 import { loadComments, createComment } from '../../store/comments';
+import { loadUsers } from '../../store/user';
 import DeleteCommentModal from '../DeleteCommentModal/DeleteComment';
+import EditCommentModal from '../EditCommentModal/EditComment';
 import './singlephotopage.css';
 
 const Comments = () => {
@@ -10,6 +12,8 @@ const Comments = () => {
     // const history = useHistory();
     const dispatch = useDispatch();
     const { id } = useParams();
+    const users = useSelector(state => state?.user?.entries);
+    // console.log('THIS IS ALL THE USERS', users)
 
     const [newComment, setNewComment] = useState('');
     const [errors, setErrors] = useState([]);
@@ -21,6 +25,7 @@ const Comments = () => {
 
     useEffect(() => {
         dispatch(loadComments(id));
+        dispatch(loadUsers());
     }, [dispatch, id]);
 
     useEffect(() => {
@@ -55,7 +60,7 @@ const Comments = () => {
 
     return (
         <div className="comments-container">
-            {allComments.map((comment) => (
+            {allComments && allComments.map((comment) => (
                 <div className="comment" key={`${comment.id}`}>
                     <div className="comment-details">
                         {/* <NavLink id='comment-username'
@@ -63,12 +68,14 @@ const Comments = () => {
                         >{`@${comment.User.username}`}</NavLink> */}
                         {/* {`@${comment.User.username}`} */}
                         <p id='comment-text'>
-                            {`@${comment.User.username}`}
+                            {/* {`@${comment.User.username}`} */}
+                            {`@${users[comment.userId]?.username}`}
                             <span id='comment-text-span'> {comment.comment} </span>
-                            {comment.User.id === sessionUser.id ? (
-                                // <div className="delete-comment-btn">
-                                    <DeleteCommentModal comment={comment} />
-                                // </div>
+                            {comment?.User?.id === sessionUser?.id ? (
+                                    <>
+                                        <EditCommentModal comment={comment} />
+                                        <DeleteCommentModal comment={comment} />
+                                    </>
                             ) : (
                                 ""
                             )}

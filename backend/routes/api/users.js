@@ -46,6 +46,12 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     })
 );
 
+// get all users
+router.get('/', asyncHandler(async (req, res) => {
+  const users = await User.findAll();
+  return res.json(users);
+}))
+
 // get user profile page with photostream
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
   const { id } = req.params;

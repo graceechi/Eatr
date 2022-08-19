@@ -48,12 +48,15 @@ export const createComment = data => async dispatch => {
 }
 
 export const editComment = payload => async dispatch => {
-    const { userId, photoId, commentId, comment } = payload;
+    // console.log('--AMMM I HITTING EDIT COMMENT THUNK????')
+    const { commentId, comment } = payload;
+    // console.log('THIS IS THE EDIT COMMENT PAYLOAD', payload)
     const res = await csrfFetch(`/api/comments/${commentId}`, {
         method: "PUT",
-        body: JSON.stringify({ userId, photoId, comment })
+        body: JSON.stringify({ comment })
     });
     const updatedComment = await res.json();
+    console.log('editeddd comment', updatedComment)
     dispatch(updateComment(updatedComment));
 }
 
@@ -86,16 +89,18 @@ const commentsReducer = (state = initialState, action) => {
         }
 
         case UPDATE_COMMENT:
-            // const newState = { ...state, entries: { ...state.entries } };
-            // newState.entries[action.comment.id] = action.comment;
-            // return newState;
-            return {
-                ...state,
-                entries: {
-                  ...state.entries,
-                  [action.comment.id]: action.comment,
-                },
-            };
+            console.log('ACTIONNNNNN', action.comment)
+            const newState = { ...state, entries: { ...state.entries } };
+            newState.entries[action.comment.id] = action.comment;
+            console.log('NEW STATE', newState)
+            return newState;
+            // return {
+            //     ...state,
+            //     entries: {
+            //       ...state.entries,
+            //       [action.comment.editedComment.id]: action.comment,
+            //     },
+            // };
 
         case REMOVE_COMMENT: {
             const newState = { ...state, entries: {...state.entries} }
