@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect, NavLink, useHistory } from 'react-router-dom';
 import { loadComments, createComment } from '../../store/comments';
+import { loadUsers } from '../../store/user';
 import DeleteCommentModal from '../DeleteCommentModal/DeleteComment';
+import EditCommentModal from '../EditCommentModal/EditComment';
 import './singlephotopage.css';
 
 const Comments = () => {
@@ -10,9 +12,12 @@ const Comments = () => {
     // const history = useHistory();
     const dispatch = useDispatch();
     const { id } = useParams();
+    const users = useSelector(state => state?.user?.entries);
+    // console.log('THIS IS ALL THE USERS', users)
 
     const [newComment, setNewComment] = useState('');
     const [errors, setErrors] = useState([]);
+    const [showErrors, setShowErrors] = useState(false);
 
     // getting/filtering comments from DB
     const comments = useSelector(state => state.comments.entries); // object of arrays
@@ -21,6 +26,7 @@ const Comments = () => {
 
     useEffect(() => {
         dispatch(loadComments(id));
+        dispatch(loadUsers());
     }, [dispatch, id]);
 
     useEffect(() => {
@@ -38,10 +44,13 @@ const Comments = () => {
 
         if (newComment.length === 0) {
             setNewComment('');
+            setShowErrors(true);
         } else if (newComment.trim().length === 0) {
             setNewComment('');
+            setShowErrors(true);
         } else if (newComment.length > 250) {
             setNewComment('');
+            setShowErrors(true);
         } else {
             const comment = {
                 userId: sessionUser.id,
@@ -50,12 +59,13 @@ const Comments = () => {
             }
             dispatch(createComment(comment));
             setNewComment('');
+            setShowErrors(false);
         }
     }
 
     return (
         <div className="comments-container">
-            {allComments.map((comment) => (
+            {allComments && allComments.map((comment) => (
                 <div className="comment" key={`${comment.id}`}>
                     <div className="comment-details">
                         {/* <NavLink id='comment-username'
@@ -63,12 +73,14 @@ const Comments = () => {
                         >{`@${comment.User.username}`}</NavLink> */}
                         {/* {`@${comment.User.username}`} */}
                         <p id='comment-text'>
-                            {`@${comment.User.username}`}
+                            {/* {`@${comment.User.username}`} */}
+                            {`@${users[comment.userId]?.username}`}
                             <span id='comment-text-span'> {comment.comment} </span>
-                            {comment.User.id === sessionUser.id ? (
-                                // <div className="delete-comment-btn">
-                                    <DeleteCommentModal comment={comment} />
-                                // </div>
+                            {comment?.User?.id === sessionUser?.id ? (
+                                    <>
+                                        <EditCommentModal comment={comment} />
+                                        <DeleteCommentModal comment={comment} />
+                                    </>
                             ) : (
                                 ""
                             )}
@@ -80,9 +92,12 @@ const Comments = () => {
             {/* insert add comment textbox */}
             <div className='create-comment-container'>
                 <div>
-                    {errors.map((error, ind) => (
+                    {showErrors ? errors.map((error, ind) => (
                         <div className='create-comment-error-messages' key={ind}>{error}</div>
-                    ))}
+                    ))
+                    :
+                    null
+                    }
                 </div>
                 <form onSubmit={addComment}>
                     <textarea className='create-comment-box' value={newComment} onChange={e => setNewComment(e.target.value)} placeholder=" Leave a comment!" required ></textarea>

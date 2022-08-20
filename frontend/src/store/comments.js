@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 const VIEW_COMMENTS = '/photos/VIEW_COMMENTS';
 const ADD_COMMENT = 'photos/ADD_COMMENT';
-// const UPDATE_COMMENT = '/photos/UPDATE_COMMENT';
+const UPDATE_COMMENT = '/photos/UPDATE_COMMENT';
 const REMOVE_COMMENT = '/photos/REMOVE_COMMENT';
 
 const viewComments = comments => ({
@@ -12,6 +12,11 @@ const viewComments = comments => ({
 
 const addComment = comment => ({
     type: ADD_COMMENT,
+    comment
+})
+
+const updateComment = comment => ({
+    type: UPDATE_COMMENT,
     comment
 })
 
@@ -42,6 +47,19 @@ export const createComment = data => async dispatch => {
     }
 }
 
+export const editComment = payload => async dispatch => {
+    // console.log('--AMMM I HITTING EDIT COMMENT THUNK????')
+    const { commentId, comment } = payload;
+    // console.log('THIS IS THE EDIT COMMENT PAYLOAD', payload)
+    const res = await csrfFetch(`/api/comments/${commentId}`, {
+        method: "PUT",
+        body: JSON.stringify({ comment })
+    });
+    const updatedComment = await res.json();
+    console.log('editeddd comment', updatedComment)
+    dispatch(updateComment(updatedComment));
+}
+
 export const deleteComment = id => async dispatch => {
     const res = await csrfFetch(`/api/comments/${id}`, {
         method: 'DELETE'
@@ -69,6 +87,20 @@ const commentsReducer = (state = initialState, action) => {
             newState.entries[action.comment.id] = action.comment;
           return newState;
         }
+
+        case UPDATE_COMMENT:
+            console.log('ACTIONNNNNN', action.comment)
+            const newState = { ...state, entries: { ...state.entries } };
+            newState.entries[action.comment.id] = action.comment;
+            console.log('NEW STATE', newState)
+            return newState;
+            // return {
+            //     ...state,
+            //     entries: {
+            //       ...state.entries,
+            //       [action.comment.editedComment.id]: action.comment,
+            //     },
+            // };
 
         case REMOVE_COMMENT: {
             const newState = { ...state, entries: {...state.entries} }

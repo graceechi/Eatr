@@ -61,16 +61,30 @@
     width: 25rem;
 }
 
+.aws-input {
+    width: 75%;
+    padding: 10px;
+    height: 25px;
+    border: 1px black solid;
+    color: gray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+}
+
+.aws-input:hover {
+    background-color: beige;
+    cursor: pointer;
+    background-color: rgb(246, 243, 241);
+}
+
 .form-input {
     width: 75%;
     padding: 10px;
     height: 25px;
     /* border-radius: 3px; */
 }
-
-/* .file-input {
-    align-items: center;
-} */
 
 #submitBtn, #cancelBtn {
     width: 82%;

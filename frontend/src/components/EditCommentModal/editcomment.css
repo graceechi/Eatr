@@ -1,4 +1,4 @@
-#remove-comment-btn {
+#edit-comment-modal-btn {
     background: none;
     color: black;
     border: none;
@@ -8,7 +8,7 @@
     height: 60px; */
 }
 
-.delete-comment-modal {
+.edit-comment-modal {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,7 +25,7 @@
     width: 200px;
 }
 
-.delete-comment-button, .cancel-comment-button {
+.edit-comment-submit-btn, .cancel-edit-button {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,12 +37,16 @@
     color: white;
 }
 
-.delete-comment-button:hover, .cancel-comment-button:hover {
+.edit-comment-submit-btn:hover, .cancel-edit-button:hover {
     background-color: rgb(27, 27, 27);
     border: 1px solid rgb(27, 27, 27);
 }
 
-.delete-comment-header {
+.edit-comment-error-messages {
+    color: rgb(162, 101, 101);
+}
+
+.edit-comment-header {
     text-align: center;
     margin-bottom: 5px;
     font-size: 17px;
