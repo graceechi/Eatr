@@ -59,4 +59,5 @@
 
 ## Stretch Goals
 - [ ] Favorites
+- [ ] Albums
 - [ ] Tags
