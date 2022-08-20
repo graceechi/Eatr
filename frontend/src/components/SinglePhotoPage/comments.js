@@ -17,6 +17,7 @@ const Comments = () => {
 
     const [newComment, setNewComment] = useState('');
     const [errors, setErrors] = useState([]);
+    const [showErrors, setShowErrors] = useState(false);
 
     // getting/filtering comments from DB
     const comments = useSelector(state => state.comments.entries); // object of arrays
@@ -43,10 +44,13 @@ const Comments = () => {
 
         if (newComment.length === 0) {
             setNewComment('');
+            setShowErrors(true);
         } else if (newComment.trim().length === 0) {
             setNewComment('');
+            setShowErrors(true);
         } else if (newComment.length > 250) {
             setNewComment('');
+            setShowErrors(true);
         } else {
             const comment = {
                 userId: sessionUser.id,
@@ -55,6 +59,7 @@ const Comments = () => {
             }
             dispatch(createComment(comment));
             setNewComment('');
+            setShowErrors(false);
         }
     }
 
@@ -87,9 +92,12 @@ const Comments = () => {
             {/* insert add comment textbox */}
             <div className='create-comment-container'>
                 <div>
-                    {errors.map((error, ind) => (
+                    {showErrors ? errors.map((error, ind) => (
                         <div className='create-comment-error-messages' key={ind}>{error}</div>
-                    ))}
+                    ))
+                    :
+                    null
+                    }
                 </div>
                 <form onSubmit={addComment}>
                     <textarea className='create-comment-box' value={newComment} onChange={e => setNewComment(e.target.value)} placeholder=" Leave a comment!" required ></textarea>

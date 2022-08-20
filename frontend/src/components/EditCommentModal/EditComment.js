@@ -65,24 +65,24 @@ const EditCommentModal = ({ comment, image }) => {
         </button>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                <form onSubmit={handleEdit}>
-                    <div className="edit-comment-modal">
-                    <div>
-                        {errors.map((error, ind) => (
-                            <div className='edit-comment-error-messages' key={ind}>{error}</div>
-                        ))}
+
+                <div className="edit-comment-modal">
+                <div>
+                    {errors.map((error, ind) => (
+                        <div className='edit-comment-error-messages' key={ind}>{error}</div>
+                    ))}
+                </div>
+                    <div className="edit-input-container">
+                        <textarea
+                            className="edit-form-input"
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                        />
                     </div>
-                        <div className="input-container">
-                            <textarea
-                                className="edit-form-input"
-                                value={text}
-                                onChange={(e) => setText(e.target.value)}
-                            />
-                        </div>
-                        <button className="edit-comment-submit-btn" >Save</button>
-                        <button className="cancel-edit-button" onClick={handleCancel}>Cancel</button>
-                    </div>
-                </form>
+                    <button className="edit-comment-submit-btn" onClick={handleEdit}>Save</button>
+                    <button className="cancel-edit-button" onClick={handleCancel}>Cancel</button>
+                </div>
+
             </Modal>
         )}
         </>
