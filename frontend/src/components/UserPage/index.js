@@ -18,15 +18,15 @@ function UserPage() {
         dispatch(getUserPhotos(id));
     }, [dispatch, id]);
 
-    const navPhotostream = e => {
-        e.preventDefault();
-        history.push(`/users/${id}`);
-    }
+    // const navPhotostream = e => {
+    //     e.preventDefault();
+    //     history.push(`/users/${id}`);
+    // }
 
-    const navFaves = e => {
-        e.preventDefault();
-        history.push(`/users/${id}/faves`)
-    }
+    // const navFaves = e => {
+    //     e.preventDefault();
+    //     history.push(`/users/${id}/faves`)
+    // }
 
     if (!sessionUser) {
         return (

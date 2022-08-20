@@ -1,7 +1,7 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Photo, Comment, Fave } = require('../../db/models');
+const { User, Photo, Fave } = require('../../db/models');
 
 const {
     singleMulterUpload,
@@ -77,5 +77,29 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     await deletePhoto.destroy();
     return res.json(deletePhoto);
   }))
+
+
+// ------ faves ---------
+// create fave on a photo
+  //  :id = photoId
+router.post("/:id(\\d+)/fave", requireAuth, asyncHandler(async (req, res) => {
+  const fave = await Fave.create(req.body);
+  return res.json(fave);
+}));
+
+//  delete fave on a photo
+  //  :id = photoId
+router.delete("/:id(\\d+)/fave", requireAuth, asyncHandler(async (req, res) => {
+  const photoId = req.params.id;
+  const { userId } = req.body;
+  const fave = await Fave.findOne({
+    where: {
+      userId, photoId
+    },
+    include: [{ model: Photo }, { model: User }],
+  });
+  await fave.destroy();
+  res.send({ fave, userId });
+}));
 
 module.exports = router;
