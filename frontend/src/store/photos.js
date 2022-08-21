@@ -7,6 +7,8 @@ const ADD_ONE_PHOTO = 'photos/ADD_ONE_PHOTO';
 const UPDATE_PHOTO = '/photos/UPDATE_PHOTO';
 const DELETE_PHOTO = '/photos/DELETE_PHOTO';
 
+const CREATE_FAVES = 'faves/CREATE_FAVES';
+const DELETE_FAVES = 'faves/DELETE_FAVES';
 
 const load = photos => ({
   type: LOAD_PHOTOS,
@@ -36,6 +38,17 @@ const updatePhoto = photo => ({
 const deletePhoto = photo => ({
   type: DELETE_PHOTO,
   photo
+})
+
+const createFave = (fave) => ({
+  type: CREATE_FAVES,
+  fave
+})
+
+const deleteFave = (fave, userId) => ({
+  type: DELETE_FAVES,
+  fave,
+  userId
 })
 
 // thunk
@@ -132,6 +145,50 @@ export const getUserPhotos = id => async dispatch => {
 
     dispatch(loadUserPhotos(Object.values(photos)));
   }
+}
+
+//  add fave thunk
+export const addFave = (payload) => async (dispatch) => {
+  const { photoId, userId, imageUrl, favesCount, photoUserId} = payload;
+  const res = await csrfFetch(`/api/photos/${photoId}/fave`, {
+    method: "POST",
+    body: JSON.stringify({ userId, photoId })
+  });
+  const fave = await res.json();
+
+  // const updateRes = await csrfFetch(`/api/photos/${photoId}/favorite`, {
+  //   method: "PUT",
+  //   body: JSON.stringify({
+  //     photoId,
+  //     userId: photoUserId,
+  //     imageUrl,
+  //     favesCount
+  //   }),
+  // });
+
+  dispatch(createFave(fave));
+}
+
+//  delete fave thunk
+export const removeFave = (payload) => async (dispatch) => {
+  const { photoId, userId, imageUrl, favesCount, photoUserId} = payload;
+  const res = await csrfFetch(`/api/photos/${photoId}/fave`, {
+    method: "DELETE",
+    body: JSON.stringify({ userId })
+  });
+  const data = await res.json();
+
+  // const updateRes = await csrfFetch(`/api/photos/${photoId}/favorite`, {
+  //   method: "PUT",
+  //   body: JSON.stringify({
+  //     photoId,
+  //     userId: photoUserId,
+  //     imageUrl,
+  //     favesCount
+  //   }),
+  // });
+
+  dispatch(deleteFave(data.fave, data.userId));
 }
 
 const initialState = { entries: {}, isLoading: true }
