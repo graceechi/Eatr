@@ -2,7 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 
 const { requireAuth, restoreUser } = require("../../utils/auth");
-const { Photo, Fave, User } = require("../..db/models");
+const { Photo, Fave, User } = require("../../db/models");
 
 const router = express.Router();
 
@@ -43,4 +43,4 @@ router.get("/users/:userId(\\d+)", requireAuth, restoreUser, asyncHandler(async 
   return res.json(faves);
 }));
 
-  module.exports = router;
+module.exports = router;
