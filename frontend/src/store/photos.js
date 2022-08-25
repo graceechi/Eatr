@@ -9,6 +9,7 @@ const DELETE_PHOTO = '/photos/DELETE_PHOTO';
 
 const CREATE_FAVES = 'faves/CREATE_FAVES';
 const DELETE_FAVES = 'faves/DELETE_FAVES';
+const LOAD_USER_FAVES = 'faves/LOAD_USER_FAVES';
 
 const load = photos => ({
   type: LOAD_PHOTOS,
@@ -50,6 +51,13 @@ const deleteFave = (fave, userId) => ({
   fave,
   userId
 })
+
+const loadUserFaves = (photos) => {
+    return {
+        type: LOAD_USER_FAVES,
+        photos
+    }
+}
 
 // thunk
 export const getPhotos = () => async dispatch => {
@@ -191,10 +199,17 @@ export const removeFave = (payload) => async (dispatch) => {
   dispatch(deleteFave(data.fave, data.userId));
 }
 
-const initialState = { entries: {}, isLoading: true }
+// load user faved photos (on profile page faves tab)
+export const loadFavePhotos = (userId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/faves/users/${userId}`);
+    const faves = await res.json();
+    dispatch(loadUserFaves(faves));
+}
+
+const initialState = { entries: {}, favoritedPhotos: {}, isLoading: true }
 
 const photosReducer = (state = initialState, action) => {
-  // let newState = {};
+  let faveNewState = {};
   switch (action.type) {
     case LOAD_PHOTOS: {
       const newState = { ...state, entries: {...state.entries} };
@@ -235,6 +250,63 @@ const photosReducer = (state = initialState, action) => {
       const newState = { ...state, entries: {...state.entries} }
       delete newState.entries[action.photo];
       return newState;
+
+    case CREATE_FAVES:
+      const oldFavesCount = parseInt(state.entries[action.fave.photoId].favesCount);
+      const newFavesCount = oldFavesCount + 1;
+      // const newState = { ...state, entries: {...state.entries} };
+      faveNewState = {
+        ...state,
+        entries: {
+          ...state.entries,
+          [action.fave.photoId]: {
+            ...state.entries[action.fave.photoId],
+            favesCount: newFavesCount,
+            Faves: [
+              ...state.entries[action.fave.photoId].Faves,
+              {
+                userId: action.fave.userId,
+                photoId: action.fave.photoId
+              }
+            ]
+          }
+        }
+      };
+      faveNewState.entries[action.fave.photoId].favesCount = newFavesCount;
+      return faveNewState;
+
+    case DELETE_FAVES:
+      const oldFaveCount = parseInt(state.entries[action.fave.photoId].favesCount);
+      const newFaveCount = oldFaveCount - 1;
+      const faveIdx = state.entries[
+        action.fave.Photo.id
+      ].Faves.findIndex(
+        (fave) => fave.userId === action.fave.userId
+      );
+      faveNewState = {
+        ...state,
+        entries: {
+          ...state.entries,
+          [action.fave.Photo.id]: {
+            ...state.entries[action.fave.Photo.id],
+            favesCount: newFaveCount,
+            Faves: [
+              ...state.entries[action.fave.Photo.id].Faves,
+            ]
+          }
+        }
+      };
+      faveNewState.entries[action.fave.Photo.id].Faves.splice(
+        faveIdx,
+        1
+      );
+      return faveNewState;
+
+    case LOAD_USER_FAVES:
+      return {
+        ...state,
+        favoritedPhotos: { ...action.photos }
+      }
 
     default:
       return state;

@@ -36,6 +36,10 @@
     margin-top: 5px;
   }
 
+p#photo-caption {
+  margin-bottom: 5px;
+}
+
 #photographer {
     font-weight: bold;
     color: rgb(180, 108, 53);
@@ -79,6 +83,10 @@ faves-container {
     font-weight: bold;
     color: rgb(213, 185, 163);
     font-size: 15px;
+}
+
+.fave-span {
+  margin-left: 5px;
 }
 
 p {

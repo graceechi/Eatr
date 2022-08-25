@@ -8,6 +8,7 @@ import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
 import ExplorePage from './components/ExplorePage';
 import UserPage from './components/UserPage';
+import UserPageFaves from "./components/UserPageFaves";
 import SinglePhotoPage from "./components/SinglePhotoPage";
 import PageNotFound from "./components/PageNotFound";
 
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/users/:id">
             <UserPage />
+          </Route>
+          <Route exact path="/users/:id/faves">
+            <UserPageFaves />
           </Route>
           <Route path="/photos/:id">
             <SinglePhotoPage />

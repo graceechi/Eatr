@@ -1,22 +1,23 @@
 import React, { useEffect } from 'react';
 import { Redirect, useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserPhotos, loadFavePhotos } from '../../store/photos';
-import './userpage.css';
+import { loadFavePhotos } from '../../store/photos';
+import './userpagefaves.css';
 
-function UserPage() {
+const UserPageFaves = () => {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
+    const userId = parseInt(id, 10);
+
     const userPhotos = useSelector(state => state.photos.entries)
 
     const userPhotoArr = Object.values(userPhotos);
-    // const user = Object.values(userPhotoArr)[0]?.User;
 
     useEffect(() => {
-        dispatch(getUserPhotos(id));
-    }, [dispatch, id]);
+        dispatch(loadFavePhotos(userId));
+    }, [dispatch, userId]);
 
     const navPhotostream = e => {
         e.preventDefault();
@@ -56,9 +57,7 @@ function UserPage() {
                             <a href={`/photos/${photo.id}`} onClick={e => { e.preventDefault(); history.push(`/photos/${photo.id}`)}}>
                                 <div className='photo-box'>
                                     <img className='photo' src={photo.imageUrl} alt={photo.caption} />
-                                    {/* <div className='text-display'>
-                                        <p id='explore-photo-caption'>{photo.caption}</p>
-                                    </div> */}
+
                                 </div>
                             </a>
                         </div>
@@ -69,4 +68,4 @@ function UserPage() {
     )
 }
 
-export default UserPage;
+export default UserPageFaves;

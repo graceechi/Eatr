@@ -8,6 +8,7 @@ import './singlephotopage.css';
 import EditPhotoModal from '../EditPhotoModal';
 import DeletePhotoModal from '../DeletePhotoModal';
 import Comments from './comments';
+import FaveButton from '../FaveButton';
 
 const SinglePhotoPage = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -66,6 +67,11 @@ const SinglePhotoPage = () => {
                     <div className='caption'>
                         <p id='photo-caption'>{photo.caption}</p>
                         {/* <p id='faves-text'>109 people faved this</p> */}
+
+                        {/* <div className='faves-details'> */}
+                            <FaveButton photo={photo} small={true} />
+                            <span className='fave-span'>{`${photo.favesCount} people faved this`}</span>
+                        {/* </div> */}
                     </div>
                     <hr/>
                     <Comments />
