@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFave, removeFave } from '../../store/photos';
+// import { addFave, removeFave } from '../../store/photos';
+import { addFave, removeFave } from '../../store/faves';
 import './favebutton.css';
 
 const FaveButton = ({ photo, small }) => {

@@ -251,62 +251,62 @@ const photosReducer = (state = initialState, action) => {
       delete newState.entries[action.photo];
       return newState;
 
-    case CREATE_FAVES:
-      const oldFavesCount = parseInt(state.entries[action.fave.photoId].favesCount);
-      const newFavesCount = oldFavesCount + 1;
-      // const newState = { ...state, entries: {...state.entries} };
-      faveNewState = {
-        ...state,
-        entries: {
-          ...state.entries,
-          [action.fave.photoId]: {
-            ...state.entries[action.fave.photoId],
-            favesCount: newFavesCount,
-            Faves: [
-              ...state.entries[action.fave.photoId].Faves,
-              {
-                userId: action.fave.userId,
-                photoId: action.fave.photoId
-              }
-            ]
-          }
-        }
-      };
-      faveNewState.entries[action.fave.photoId].favesCount = newFavesCount;
-      return faveNewState;
+    // case CREATE_FAVES:
+    //   const oldFavesCount = parseInt(state.entries[action.fave.photoId].favesCount);
+    //   const newFavesCount = oldFavesCount + 1;
+    //   // const newState = { ...state, entries: {...state.entries} };
+    //   faveNewState = {
+    //     ...state,
+    //     entries: {
+    //       ...state.entries,
+    //       [action.fave.photoId]: {
+    //         ...state.entries[action.fave.photoId],
+    //         favesCount: newFavesCount,
+    //         Faves: [
+    //           ...state.entries[action.fave.photoId].Faves,
+    //           {
+    //             userId: action.fave.userId,
+    //             photoId: action.fave.photoId
+    //           }
+    //         ]
+    //       }
+    //     }
+    //   };
+    //   faveNewState.entries[action.fave.photoId].favesCount = newFavesCount;
+    //   return faveNewState;
 
-    case DELETE_FAVES:
-      const oldFaveCount = parseInt(state.entries[action.fave.photoId].favesCount);
-      const newFaveCount = oldFaveCount - 1;
-      const faveIdx = state.entries[
-        action.fave.Photo.id
-      ].Faves.findIndex(
-        (fave) => fave.userId === action.fave.userId
-      );
-      faveNewState = {
-        ...state,
-        entries: {
-          ...state.entries,
-          [action.fave.Photo.id]: {
-            ...state.entries[action.fave.Photo.id],
-            favesCount: newFaveCount,
-            Faves: [
-              ...state.entries[action.fave.Photo.id].Faves,
-            ]
-          }
-        }
-      };
-      faveNewState.entries[action.fave.Photo.id].Faves.splice(
-        faveIdx,
-        1
-      );
-      return faveNewState;
+    // case DELETE_FAVES:
+    //   const oldFaveCount = parseInt(state.entries[action.fave.photoId].favesCount);
+    //   const newFaveCount = oldFaveCount - 1;
+    //   const faveIdx = state.entries[
+    //     action.fave.Photo.id
+    //   ].Faves.findIndex(
+    //     (fave) => fave.userId === action.fave.userId
+    //   );
+    //   faveNewState = {
+    //     ...state,
+    //     entries: {
+    //       ...state.entries,
+    //       [action.fave.Photo.id]: {
+    //         ...state.entries[action.fave.Photo.id],
+    //         favesCount: newFaveCount,
+    //         Faves: [
+    //           ...state.entries[action.fave.Photo.id].Faves,
+    //         ]
+    //       }
+    //     }
+    //   };
+    //   faveNewState.entries[action.fave.Photo.id].Faves.splice(
+    //     faveIdx,
+    //     1
+    //   );
+    //   return faveNewState;
 
-    case LOAD_USER_FAVES:
-      return {
-        ...state,
-        favoritedPhotos: { ...action.photos }
-      }
+    // case LOAD_USER_FAVES:
+    //   return {
+    //     ...state,
+    //     favoritedPhotos: { ...action.photos }
+    //   }
 
     default:
       return state;

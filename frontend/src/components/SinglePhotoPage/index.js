@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect, useHistory } from 'react-router-dom';
 import { getOnePhoto } from '../../store/photos';
+import { getPhotoFaves } from '../../store/faves';
 import './singlephotopage.css';
-// import EditPhotoContainer from '../EditPhotoModal/EditPhotoForm';
-// import DeletePhotoContainer from '../DeletePhotoModal/DeletePhotoForm';
+
 import EditPhotoModal from '../EditPhotoModal';
 import DeletePhotoModal from '../DeletePhotoModal';
 import Comments from './comments';
@@ -22,6 +22,7 @@ const SinglePhotoPage = () => {
     useEffect(() => {
         dispatch(getOnePhoto(id));
         // dispatch(getComments(id));
+        dispatch(getPhotoFaves(id));
         setIsLoaded(true);
     }, [dispatch, id])
 
