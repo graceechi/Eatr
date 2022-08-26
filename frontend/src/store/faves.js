@@ -105,7 +105,7 @@ const favesReducer = (state = initialState, action) => {
                 ...userFaves
             }
         case CREATE_FAVES:
-            const newFave = {};
+            const newFave = { ...state };
             newFave[action.fave.id] = action.fave;
             return {
                 ...newFave

@@ -70,7 +70,7 @@ const SinglePhotoPage = () => {
                         {/* <p id='faves-text'>109 people faved this</p> */}
 
                         {/* <div className='faves-details'> */}
-                            <FaveButton photo={photo} small={true} />
+                            <FaveButton photoId={id} photo={photo} small={true} />
                             <span className='fave-span'>{`${photo.favesCount} people faved this`}</span>
                         {/* </div> */}
                     </div>

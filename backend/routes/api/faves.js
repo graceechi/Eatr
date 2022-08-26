@@ -25,13 +25,14 @@ router.get("/users/:userId(\\d+)", requireAuth, restoreUser, asyncHandler(async 
   return res.json(faves);
 }));
 
-module.exports = router;
 
 // delete a fave on a photo (alternative route, the other one is in photos api)
-router.delete("/:faveId", asyncHandler(async(req, res) => {
-  const faveId = req.params.faveId;
-  console.log('THIS IS FAVE ID IN DELETE ROUTE IN FAVES.JS', faveId)
-  const fave = await Fave.findByPk(faveId);
-  await fave.destroy();
-  return res.json(fave);
-}))
+// router.delete("/:faveId", asyncHandler(async(req, res) => {
+//   const faveId = req.params.faveId;
+//   console.log('-----------THIS IS FAVE ID IN DELETE ROUTE IN FAVES.JS', faveId)
+//   const fave = await Fave.findByPk(faveId);
+//   await fave.destroy();
+//   return res.json(fave);
+// }))
+
+module.exports = router;
