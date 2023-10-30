@@ -1,8 +1,18 @@
 'use strict';
 
+
+// NEW: add this code to each migration file
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+// END of new code
+
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Photos', [
+    options.tableName = 'Photos';     // define table name in options object
+    return queryInterface.bulkInsert(options, [
       {
         userId: 1,
         imageUrl: "https://images.unsplash.com/photo-1600326145359-3a44909d1a39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
@@ -146,6 +156,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete("Photos", null, {});
+    options.tableName = 'Photos';     // define table name in options object
+    return queryInterface.bulkDelete(options);
   }
 };

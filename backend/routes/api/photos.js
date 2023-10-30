@@ -17,6 +17,8 @@ const router = express.Router();
 //     return res.json(newPhoto);
 // }))
 
+
+
 // upload image with AWS S3
 router.post(
     "/",
@@ -45,6 +47,8 @@ router.post(
       return res.json(newPhoto);
     })
   );
+
+
 
 // show all photos in db (explore)
 router.get('/explore', asyncHandler(async (req, res) => {
