@@ -1,5 +1,5 @@
 # Flavr
-[Flavr](https://flavr.herokuapp.com/), inspired by <a href="https://flickr.com/" target="_blank">Flickr</a>, is a platform where foodies can share their food photography and interests. 
+[Flavr](https://flavr-palette.onrender.com), inspired by <a href="https://flickr.com/" target="_blank">Flickr</a>, is a platform where foodies can share their food photography and interests. 
 
 ![Screen Shot 2022-06-05 at 11 39 17 AM](https://user-images.githubusercontent.com/90019010/172060993-934afa64-88da-4a77-bb90-24599df673f4.png)
 
